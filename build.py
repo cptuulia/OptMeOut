@@ -36,7 +36,7 @@ def monitor_directories(directories, on_change, interval=1):
         for path in directories:
             previous_snapshot = previous_snapshots[path]
             current_snapshot = get_directory_snapshot(path)
-        
+            # kk
             # Detect added files
             added_files = set(current_snapshot.keys()) - set(previous_snapshot.keys())
         
