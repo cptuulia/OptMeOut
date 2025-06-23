@@ -14,6 +14,7 @@ LANGUAGES_DIR = Path("src/languages")
 DIST_DIR = Path("dist")
 DIST_DIR.mkdir(exist_ok=True)
 
+# test
 def get_directory_snapshot(directory):
     """Returns a dictionary with file names as keys and their last modified time as values."""
     if os.path.isfile(directory):
