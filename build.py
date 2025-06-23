@@ -71,8 +71,9 @@ def generate_html():
         template = f.read()
     
     for lang, overrides in languages.items():
-
+       
         html = template
+        print(f"Generated {html}  ")
         html = html.replace("{{pageTitle}}", overrides.get("pageTitle", "Compose Your Letter"))
         merged = merge_schemas(steps.copy(), overrides)
 
