@@ -34,10 +34,22 @@ def translate(template, templateFileName, overrides):
     templateName = getTemplateName(templateFileName)
     translations = json.dumps(overrides.get(templateName));
     json_object = json.loads(translations)
+    html = test(html, '', json_object)
+    return html
+
+def test(html, baseKey, json_object):
     for key in json_object.keys():
-        replacementKey = "{{" + key +"}}"
-        pprint(json_object[key])
-        html = html.replace(replacementKey, json_object[key])
+        replacementKey = "{{" + baseKey + key +"}}"
+        pprint(replacementKey)
+        replacement = json_object[key]
+        if ( isinstance(replacement, str)):
+            html = html.replace(replacementKey, replacement)
+        else:
+            if (baseKey != ""):
+                subKey = baseKey  + key + "."
+            else:
+                 subKey = key + "."
+            html = test(html, subKey, replacement)
     return html
 
 # return the template name, so that it can be recognized by translations
