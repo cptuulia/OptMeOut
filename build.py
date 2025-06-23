@@ -4,8 +4,10 @@ import time
 
 from pathlib import Path
 from http.server import SimpleHTTPRequestHandler, HTTPServer
+# enable var_dump as pprint
+from pprint import pprint
 import multiprocessing
-
+from lib.translate import Translate
 
 # Paths
 TEMPLATE_PATH = Path("src/template.html")
@@ -13,6 +15,9 @@ STEPS_PATH = Path("src/steps.json")
 LANGUAGES_DIR = Path("src/languages")
 DIST_DIR = Path("dist")
 DIST_DIR.mkdir(exist_ok=True)
+
+
+
 
 def get_directory_snapshot(directory):
     """Returns a dictionary with file names as keys and their last modified time as values."""
@@ -26,6 +31,7 @@ def get_directory_snapshot(directory):
             snapshot[path] = os.path.getmtime(path)
     return snapshot
 
+
 def monitor_directories(directories, on_change, interval=1):
     """Monitors a directory for changes and prints out any modifications."""
     previous_snapshots = {path: get_directory_snapshot(path) for path in directories}
@@ -36,7 +42,7 @@ def monitor_directories(directories, on_change, interval=1):
         for path in directories:
             previous_snapshot = previous_snapshots[path]
             current_snapshot = get_directory_snapshot(path)
-            # kk
+        
             # Detect added files
             added_files = set(current_snapshot.keys()) - set(previous_snapshot.keys())
         
@@ -57,6 +63,7 @@ def monitor_directories(directories, on_change, interval=1):
 
 # Generate HTML files
 def generate_html():
+    translateObj = Translate()
     # Load steps
     with open(STEPS_PATH, "r") as f:
         steps = json.load(f)
@@ -66,20 +73,13 @@ def generate_html():
     for lang_file in LANGUAGES_DIR.glob("*.json"):
         with open(lang_file, "r") as f:
             languages[lang_file.stem] = json.load(f)
-
+  
     with open(TEMPLATE_PATH, "r") as f:
         template = f.read()
-    
+        templateName = f.name
     for lang, overrides in languages.items():
-       
-        html = template
-        print(f"Generated {html}  ")
-        html = html.replace("{{pageTitle}}", overrides.get("pageTitle", "Compose Your Letter"))
+        html = translateObj.translate(template, templateName, overrides)
         merged = merge_schemas(steps.copy(), overrides)
-
-        html = html.replace("{{steps}}", json.dumps(merged))
-        html = html.replace("{{language}}", json.dumps(overrides))
-
         output_path = DIST_DIR / f"{lang}.html"
         with open(output_path, "w") as f:
             f.write(html)

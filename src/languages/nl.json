@@ -1,8 +1,12 @@
 {
+  "template": {
+    "pageTitle": "NL Compose Your Letter",
+    "previous": "NL Previous",
+    "next": "NL Next",
   "step1": {
     "title": "NAW gegevens",
     "properties": {
-      "name": { "title": "Volledige naam" },
+      "name": { "title": "Voll1111edige naam" },
       "address": { "title": "Adres" }
     }
   },
@@ -20,7 +24,8 @@
   "step3": {
     "title": "Kies je huisarts",
     "properties": {
-      "gpName": { "title": "Huisarts naam", "enum": ["Mijn huisarts", "Jouw huisarts"]}
+      "gpName": { "title": "Huisarts naam"
+    }
     }
   },
   "step4": {
@@ -31,5 +36,6 @@
     "properties": {
       "subscribe": { "title": "Subscribe?"}
     }
+  }
   }
 }
