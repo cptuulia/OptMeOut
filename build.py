@@ -7,7 +7,7 @@ from http.server import SimpleHTTPRequestHandler, HTTPServer
 # enable var_dump as pprint
 from pprint import pprint
 import multiprocessing
-
+from lib.translate import Translate
 
 # Paths
 TEMPLATE_PATH = Path("src/template.html")
@@ -15,6 +15,9 @@ STEPS_PATH = Path("src/steps.json")
 LANGUAGES_DIR = Path("src/languages")
 DIST_DIR = Path("dist")
 DIST_DIR.mkdir(exist_ok=True)
+
+
+
 
 def get_directory_snapshot(directory):
     """Returns a dictionary with file names as keys and their last modified time as values."""
@@ -28,36 +31,6 @@ def get_directory_snapshot(directory):
             snapshot[path] = os.path.getmtime(path)
     return snapshot
 
-# Translate the current template
-def translate(template, templateFileName, overrides):
-    html = template
-    templateName = getTemplateName(templateFileName)
-    translations = json.dumps(overrides.get(templateName));
-    json_object = json.loads(translations)
-    html = test(html, '', json_object)
-    return html
-
-def test(html, baseKey, json_object):
-    for key in json_object.keys():
-        replacementKey = "{{" + baseKey + key +"}}"
-        pprint(replacementKey)
-        replacement = json_object[key]
-        if ( isinstance(replacement, str)):
-            html = html.replace(replacementKey, replacement)
-        else:
-            if (baseKey != ""):
-                subKey = baseKey  + key + "."
-            else:
-                 subKey = key + "."
-            html = test(html, subKey, replacement)
-    return html
-
-# return the template name, so that it can be recognized by translations
-def getTemplateName(templateFileName):
-    template = templateFileName
-    template = template.replace('.html', '');
-    template = template.replace ("src/", '');
-    return template
 
 def monitor_directories(directories, on_change, interval=1):
     """Monitors a directory for changes and prints out any modifications."""
@@ -90,6 +63,7 @@ def monitor_directories(directories, on_change, interval=1):
 
 # Generate HTML files
 def generate_html():
+    translateObj = Translate()
     # Load steps
     with open(STEPS_PATH, "r") as f:
         steps = json.load(f)
@@ -104,7 +78,7 @@ def generate_html():
         template = f.read()
         templateName = f.name
     for lang, overrides in languages.items():
-        html = translate(template, templateName, overrides)
+        html = translateObj.translate(template, templateName, overrides)
         merged = merge_schemas(steps.copy(), overrides)
         output_path = DIST_DIR / f"{lang}.html"
         with open(output_path, "w") as f:
