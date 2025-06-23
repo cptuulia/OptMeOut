@@ -1,4 +1,9 @@
 {
+   "template": {
+    "pageTitle": "Compose Your Letter",
+    "previous": "Previous",
+    "next": "Next"
+  },
   "step1": {
     "title": "Name and Address",
     "properties": {

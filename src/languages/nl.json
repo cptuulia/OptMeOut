@@ -1,8 +1,13 @@
 {
+  "template": {
+    "pageTitle": "NL Compose Your Letter",
+    "previous": "NL Previous",
+    "next": "NL Next"
+  },
   "step1": {
     "title": "NAW gegevens",
     "properties": {
-      "name": { "title": "Volledige naam" },
+      "name": { "title": "Voll1111edige naam" },
       "address": { "title": "Adres" }
     }
   },
