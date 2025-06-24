@@ -10,7 +10,6 @@ class Translate:
     json_object = json.loads(translations)
     html = self.translateSet(html, '', json_object)
     return html
-    return ""
     
   def translateSet(self, html, baseKey, json_object):
     for key in json_object.keys():

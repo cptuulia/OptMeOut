@@ -8,6 +8,7 @@ from http.server import SimpleHTTPRequestHandler, HTTPServer
 from pprint import pprint
 import multiprocessing
 from lib.translate import Translate
+from lib.cvsExport import CvsExport
 
 # Paths
 TEMPLATE_PATH = Path("src/template.html")
@@ -15,7 +16,8 @@ STEPS_PATH = Path("src/steps.json")
 LANGUAGES_DIR = Path("src/languages")
 DIST_DIR = Path("dist")
 DIST_DIR.mkdir(exist_ok=True)
-
+CSV_DIR = Path("dist/csv")
+CSV_DIR.mkdir(exist_ok=True)
 
 
 
@@ -135,6 +137,8 @@ def start_server():
 
 if __name__ == "__main__":
     generate_html()
+    cvsExport = CvsExport(LANGUAGES_DIR, CSV_DIR)
+    cvsExport.exportAll();
 
     start_monitoring([TEMPLATE_PATH, STEPS_PATH, LANGUAGES_DIR], generate_html)
     # Start HTTP server
