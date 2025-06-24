@@ -25,7 +25,6 @@ class CvsExport:
   def exportAll(self):
     languages = {}
     for langFile in self.languagesDir.glob("*.json"):
-        self.setCurrentLanguageToExport(langFile)
         with open(langFile, "r") as f:
           languages[langFile.stem] = json.load(f)
     for lang, translations in languages.items():
@@ -99,13 +98,3 @@ class CvsExport:
           translationsJson = self.getTranslationsArray(translationsJson, subKey, value)
     return translationsJson
 
-  #
-  # Set the current language to export by reading it from
-  # the current file name
-  #
-  def setCurrentLanguageToExport(self, langFile):
-    langFileStr = langFile.as_posix()
-    languagesDirStr = str(self.languagesDir.as_posix()) + '/'
-    langFileStr = langFileStr.replace(languagesDirStr,'')
-    langFileStr = langFileStr.replace('.json','')
-    self.currentLanguageToExport = langFileStr
