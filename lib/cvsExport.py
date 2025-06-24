@@ -52,7 +52,6 @@ class CvsExport:
     itemsJson = translationsJson[templateKey]
     valuesArr = self.getTranslationsArray(valuesArr, '', itemsJson)
     csvStr = self.makeCsvContent(valuesArr)
-    print(csvStr)
     self.makeCsvFile(csvStr)
     
   #
