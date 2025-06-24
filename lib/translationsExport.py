@@ -1,6 +1,6 @@
 ########################################################################
 #
-# A class to export translations json to cvs files
+# A class to export translations json to cvsand javascript files
 #
 ########################################################################
 import json
@@ -8,14 +8,15 @@ from pprint import pprint
 from pathlib import Path
 
 
-class CvsExport:
+class TranslationsExport:
   
   #
   # Constructor
   # 
-  def __init__(self, languagesDir, csvDir):
+  def __init__(self, languagesDir, csvDir, jsDir):
     self.languagesDir = languagesDir
     self.csvDir = csvDir
+    self.jsDir = jsDir
     self.englishArr = self.setEnglishArr()
     self.currentLanguageToExport = ''
     
@@ -52,8 +53,10 @@ class CvsExport:
     templateKey = list(translationsJson)[0]
     itemsJson = translationsJson[templateKey]
     valuesArr = self.getTranslationsArray(valuesArr, '', itemsJson)
+    
     csvStr = self.makeCsvContent(valuesArr)
     self.makeCsvFile(csvStr)
+    self.makeJsFile(valuesArr)
     
   #
   # Make csv content from translation arrays
@@ -79,6 +82,21 @@ class CvsExport:
     csvFileName = csvDir + lang + '.csv'
     with open(csvFileName, "w") as f:
       f.write(csvStr)
+  
+  #
+  # Make javascript file from translation arrays
+  # 
+  def makeJsFile(self, translationsArr):
+    
+    jsonStr = json.dumps(translationsArr)
+    lang = self.currentLanguageToExport
+    script =  "let translationsJson='" + jsonStr + "';"
+    script = script + " let  globalTranslationsObj = JSON.parse(translationsJson);"
+    script = script + " function _trns(translation){return(globalTranslationsObj[translation]);}"
+    jsDir = self.jsDir.as_posix() + '/'
+    jsFileName = jsDir + lang + '.js'
+    with open(jsFileName, "w") as f:
+      f.write(script)
 
    
   #

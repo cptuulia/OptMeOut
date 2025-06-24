@@ -8,7 +8,7 @@ from http.server import SimpleHTTPRequestHandler, HTTPServer
 from pprint import pprint
 import multiprocessing
 from lib.translate import Translate
-from lib.cvsExport import CvsExport
+from lib.translationsExport import TranslationsExport
 from lib.cvsImport import CvsImport
 
 # Paths
@@ -19,7 +19,8 @@ DIST_DIR = Path("dist")
 DIST_DIR.mkdir(exist_ok=True)
 CSV_DIR = Path("dist/csv")
 CSV_DIR.mkdir(exist_ok=True)
-
+JS_DIR = Path("dist/js")
+JS_DIR.mkdir(exist_ok=True)
 
 
 def get_directory_snapshot(directory):
@@ -82,12 +83,15 @@ def generate_html():
         templateName = f.name
     for lang, overrides in languages.items():
         html = translateObj.translate(template, templateName, overrides)
+        javascriptFile = 'js/' + lang +'.js'
+        html = html.replace('{{translations_javascript}}', 'js/en.js')
         merged = merge_schemas(steps.copy(), overrides)
         output_path = DIST_DIR / f"{lang}.html"
         with open(output_path, "w") as f:
             f.write(html)
         print(f"Generated {output_path}")
-
+        
+       
 ALLOWED_OVERRIDES = ["title", "enum"]
 def merge_schemas(root, overrides):
     for step, schema in root.items():
@@ -140,8 +144,8 @@ if __name__ == "__main__":
     CvsImport = CvsImport(LANGUAGES_DIR, CSV_DIR)
     CvsImport.importAll()
     generate_html()
-    cvsExport = CvsExport(LANGUAGES_DIR, CSV_DIR)
-    cvsExport.exportAll();
+    translationsExport = TranslationsExport(LANGUAGES_DIR, CSV_DIR, JS_DIR)
+    translationsExport.exportAll();
 
     start_monitoring([TEMPLATE_PATH, STEPS_PATH, LANGUAGES_DIR], generate_html)
     # Start HTTP server

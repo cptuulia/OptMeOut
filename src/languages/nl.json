@@ -1,41 +1,53 @@
 {
-  "template": {
-    "pageTitle": "NL Compose Your Letter",
-    "previous": "NL Previous",
-    "next": "NL Next",
-  "step1": {
-    "title": "NAW gegevens",
-    "properties": {
-      "name": { "title": "Voll1111edige naam" },
-      "address": { "title": "Adres" }
+    "template": {
+        "pageTitle": "NiiiL Compose Your Letter",
+        "previous": "NL Previous",
+        "next": "NL Next",
+        "step1": {
+            "title": "NAW gegevens",
+            "properties": {
+                "name": {
+                    "title": "Voll1111edige naam"
+                },
+                "address": {
+                    "title": "Adres"
+                }
+            }
+        },
+        "step2": {
+            "title": "Optout Out",
+            "properties": {
+                "primaryUse": {
+                    "title": "Primary use"
+                },
+                "secondaryUse": {
+                    "title": "Secondary use"
+                }
+            }
+        },
+        "step3": {
+            "title": "Kies je huisarts",
+            "properties": {
+                "gpName": {
+                    "title": "Huisarts naam"
+                }
+            }
+        },
+        "step4": {
+            "title": "Hoeveel wil je betalen?",
+            "properties": {
+                "amount": {
+                    "title": ""
+                }
+            }
+        },
+        "step5": {
+            "title": "Inschrijven voor de nieuwsbrief?",
+            "properties": {
+                "subscribe": {
+                    "title": "Subscribe?"
+                }
+            }
+        }
     }
-  },
-  "step2": {
-    "title": "Optout Out",
-    "properties": {
-      "primaryUse": {
-        "title": "Primary use"
-      },
-      "secondaryUse": {
-        "title": "Secondary use"
-      }
-    }
-  },
-  "step3": {
-    "title": "Kies je huisarts",
-    "properties": {
-      "gpName": { "title": "Huisarts naam"
-    }
-    }
-  },
-  "step4": {
-    "title": "Hoeveel wil je betalen?"
-  },
-  "step5": {
-    "title": "Inschrijven voor de nieuwsbrief?",
-    "properties": {
-      "subscribe": { "title": "Subscribe?"}
-    }
-  }
-  }
 }

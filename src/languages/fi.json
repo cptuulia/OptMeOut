@@ -1,16 +1,16 @@
 {
     "template": {
-        "pageTitle": "Compose Your Letter",
-        "previous": "Previous",
-        "next": "Next",
+        "pageTitle": "finnisNiiiL Compose Your Letter",
+        "previous": "NL Previous",
+        "next": "NL Next",
         "step1": {
-            "title": "Name and Address",
+            "title": "NAW gegevens",
             "properties": {
                 "name": {
-                    "title": "Full Name"
+                    "title": "Voll1111edige naam"
                 },
                 "address": {
-                    "title": "Address"
+                    "title": "Adres"
                 }
             }
         },
@@ -26,23 +26,23 @@
             }
         },
         "step3": {
-            "title": "GP Name",
+            "title": "Kies je huisarts",
             "properties": {
                 "gpName": {
-                    "title": "Search GP Name"
+                    "title": "Huisarts naam"
                 }
             }
         },
         "step4": {
-            "title": "Choose amount to pay",
+            "title": "Hoeveel wil je betalen?",
             "properties": {
                 "amount": {
-                    "title": "Amount (\u00a3)"
+                    "title": ""
                 }
             }
         },
         "step5": {
-            "title": "Subscribe to Newsletter",
+            "title": "Inschrijven voor de nieuwsbrief?",
             "properties": {
                 "subscribe": {
                     "title": "Subscribe?"
