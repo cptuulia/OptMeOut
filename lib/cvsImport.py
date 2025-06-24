@@ -1,0 +1,81 @@
+########################################################################
+#
+# A class to import translations from cvs files to json files
+#
+########################################################################
+import json
+import csv
+from pprint import pprint
+from pathlib import Path
+
+
+class CvsImport:
+  
+  #
+  # Constructor
+  # 
+  def __init__(self, languagesDir, csvDir):
+    self.languagesDir = languagesDir
+    self.csvDir = csvDir
+    self.currentLanguageToImport = ''
+    
+  #
+  # Import all languages
+  #  
+  def importAll(self):
+    languages = {}
+    for langFile in self.csvDir.glob("*.csv"):
+        translationsArr = {}
+        with open(langFile, newline='') as csvFile:
+          reader = csv.reader(csvFile, delimiter=',', quotechar='|')
+          index = 0
+          for row in reader:
+            if (index > 0):
+              key = row[0];
+              translation = row[2];
+              self.setTranslation(translationsArr, key, translation)
+            index = index + 1
+        result = {
+          'template' : translationsArr
+        }
+        self.setLanguageFromCsvFileName(langFile)
+        jsonStr = json.dumps(result, indent = 4)
+        self.makeJsonFile(jsonStr)
+
+
+  #
+  # Set translation to translationsArr
+  #
+  def setTranslation(self, translationsArr, key, translationValue):
+      keys = key.split('.')
+      rootKey = keys[0];
+      # one dimensional array or end of multidimensional array
+      if (len(keys)  == 1):
+        translationsArr[key] = translationValue
+      else:
+        # multidimensional array
+        if (translationsArr.get(rootKey) is None):
+          translationsArr[rootKey] = {}
+        keys.pop(0)
+        subKeys = '.'.join(keys)
+        translationsArr[rootKey] = self.setTranslation(translationsArr[rootKey],subKeys, translationValue)
+      return translationsArr
+
+  #
+  # Make json file from translation json
+  # 
+  def makeJsonFile(self, jsonStr):
+    lang = self.currentLanguageToImport
+    jsonDir = self.languagesDir.as_posix() + '/'
+    jsonFileName = jsonDir  + lang + '.json'
+    with open(jsonFileName, "w") as f:
+      f.write(jsonStr)
+
+  def setLanguageFromCsvFileName(self, langFile):
+    csvDirStr = self.csvDir.as_posix() + '/'
+    langFileStr = langFile.as_posix()
+    langFileStr = langFileStr.replace(csvDirStr, '')
+    langFileStr = langFileStr.replace('.csv', '')
+    self.currentLanguageToImport = langFileStr
+
+

@@ -33,6 +33,7 @@ class CvsExport:
 
   #
   # Set the array of english translations
+  # This will be as a source translation in csv files
   #  
   def setEnglishArr(self):
     self.englishArr = {}
@@ -58,7 +59,7 @@ class CvsExport:
   # Make csv content from translation arrays
   # 
   def makeCsvContent(self, valuesArr):
-    csv = "key,english,translation (" + self.currentLanguageToExport + ")\n"
+    csv = "Key,English,Translation (" + self.currentLanguageToExport.upper() + ")\n"
     for key in self.englishArr:
       csv = csv +  key + ','
       csv = csv + self.englishArr[key] + ','
@@ -75,8 +76,8 @@ class CvsExport:
   def makeCsvFile(self, csvStr):
     lang = self.currentLanguageToExport
     csvDir = self.csvDir.as_posix() + '/'
-    csfFileName = csvDir + lang + '.csv'
-    with open(csfFileName, "w") as f:
+    csvFileName = csvDir + lang + '.csv'
+    with open(csvFileName, "w") as f:
       f.write(csvStr)
 
    

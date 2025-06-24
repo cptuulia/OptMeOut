@@ -9,6 +9,7 @@ from pprint import pprint
 import multiprocessing
 from lib.translate import Translate
 from lib.cvsExport import CvsExport
+from lib.cvsImport import CvsImport
 
 # Paths
 TEMPLATE_PATH = Path("src/template.html")
@@ -136,6 +137,8 @@ def start_server():
     process.start()
 
 if __name__ == "__main__":
+    CvsImport = CvsImport(LANGUAGES_DIR, CSV_DIR)
+    CvsImport.importAll()
     generate_html()
     cvsExport = CvsExport(LANGUAGES_DIR, CSV_DIR)
     cvsExport.exportAll();
