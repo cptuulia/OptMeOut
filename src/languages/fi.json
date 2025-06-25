@@ -1,16 +1,16 @@
 {
     "template": {
-        "pageTitle": "finnisNiiiL Compose Your Letter",
-        "previous": "NL Previous",
-        "next": "NL Next",
+        "pageTitle": "Laadi kirjeesi",
+        "previous": "Edellinen",
+        "next": "Seuraava",
         "step1": {
-            "title": "NAW gegevens",
+            "title": "Nimi ja osoite",
             "properties": {
                 "name": {
-                    "title": "Voll1111edige naam"
+                    "title": "Koko nimi"
                 },
                 "address": {
-                    "title": "Adres"
+                    "title": "Osoite"
                 }
             }
         },
@@ -18,34 +18,34 @@
             "title": "Optout Out",
             "properties": {
                 "primaryUse": {
-                    "title": "Primary use"
+                    "title": "Ensisijainen k\u00e4ytt\u00f6"
                 },
                 "secondaryUse": {
-                    "title": "Secondary use"
+                    "title": "Toissijainen k\u00e4ytt\u00f6"
                 }
             }
         },
         "step3": {
-            "title": "Kies je huisarts",
+            "title": "GP Nimi",
             "properties": {
                 "gpName": {
-                    "title": "Huisarts naam"
+                    "title": "Etsi GP nimell\u00e4"
                 }
             }
         },
         "step4": {
-            "title": "Hoeveel wil je betalen?",
+            "title": "Valitse maksum\u00e4\u00e4r\u00e4",
             "properties": {
                 "amount": {
-                    "title": ""
+                    "title": "M\u00e4\u00e4r\u00e4 (\u20ac)"
                 }
             }
         },
         "step5": {
-            "title": "Inschrijven voor de nieuwsbrief?",
+            "title": "Tilaa uutiskirje",
             "properties": {
                 "subscribe": {
-                    "title": "Subscribe?"
+                    "title": "Tilaa?"
                 }
             }
         }

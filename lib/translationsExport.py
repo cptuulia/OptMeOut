@@ -1,6 +1,6 @@
 ########################################################################
 #
-# A class to export translations json to cvsand javascript files
+# A class to export translations json to cvs and javascript files
 #
 ########################################################################
 import json

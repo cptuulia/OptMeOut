@@ -84,7 +84,7 @@ def generate_html():
     for lang, overrides in languages.items():
         html = translateObj.translate(template, templateName, overrides)
         javascriptFile = 'js/' + lang +'.js'
-        html = html.replace('{{translations_javascript}}', 'js/en.js')
+        html = html.replace('{{translations_javascript}}', javascriptFile)
         merged = merge_schemas(steps.copy(), overrides)
         output_path = DIST_DIR / f"{lang}.html"
         with open(output_path, "w") as f:
