@@ -37,7 +37,7 @@ class TranslationsExport:
   def __setEnglishArr(self):
     self.englishArr = {}
     languagesDirStr = str(config.LANGUAGES_DIR)
-    langFile = languagesDirStr + "/en.json"
+    langFile = languagesDirStr + "/en_GB.json"
     with open(langFile, "r") as f:
       translationsJson = json.load(f)
     templateKey = list(translationsJson)[0]
