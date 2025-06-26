@@ -62,8 +62,8 @@ class TranslationsExport:
   def makeCsvContent(self, valuesArr):
     csv = "Key,English,Translation (" + self.currentLanguageToExport.upper() + ")\n"
     for key in self.englishArr:
-      csv = csv +  key + ','
-      csv = csv + self.englishArr[key] + ','
+      csv = csv +  key + config.CSV_FIELD_SEPARATOR
+      csv = csv + self.englishArr[key] + config.CSV_FIELD_SEPARATOR
       value = valuesArr.get(key)
       if ( isinstance(value, str)):
         csv = csv + value + "\n"

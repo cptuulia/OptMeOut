@@ -26,7 +26,7 @@ class CvsImport:
     for langFile in Path(config.CSV_DIR).glob("*.csv"):
         translationsArr = {}
         with open(langFile, newline='') as csvFile:
-          reader = csv.reader(csvFile, delimiter=',', quotechar='|')
+          reader = csv.reader(csvFile, delimiter= config.CSV_FIELD_SEPARATOR, quotechar='|')
           index = 0
           for row in reader:
             if (index > 0):

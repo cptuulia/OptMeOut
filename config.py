@@ -10,3 +10,5 @@ DIST_DIR = "dist"
 CSV_DIR = "dist/csv"
 # generated translations javascript files
 JS_DIR = "dist/js"
+
+CSV_FIELD_SEPARATOR = ";"
