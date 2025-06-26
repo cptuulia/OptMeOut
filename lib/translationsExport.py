@@ -4,6 +4,7 @@
 #
 ########################################################################
 import json
+import config
 from pprint import pprint
 from pathlib import Path
 
@@ -13,10 +14,7 @@ class TranslationsExport:
   #
   # Constructor
   # 
-  def __init__(self, languagesDir, csvDir, jsDir):
-    self.languagesDir = languagesDir
-    self.csvDir = csvDir
-    self.jsDir = jsDir
+  def __init__(self):
     self.englishArr = self.setEnglishArr()
     self.currentLanguageToExport = ''
     
@@ -25,7 +23,7 @@ class TranslationsExport:
   #  
   def exportAll(self):
     languages = {}
-    for langFile in self.languagesDir.glob("*.json"):
+    for langFile in Path(config.LANGUAGES_DIR).glob("*.json"):
         with open(langFile, "r") as f:
           languages[langFile.stem] = json.load(f)
     for lang, translations in languages.items():
@@ -38,7 +36,7 @@ class TranslationsExport:
   #  
   def setEnglishArr(self):
     self.englishArr = {}
-    languagesDirStr = str(self.languagesDir.as_posix())
+    languagesDirStr = str(config.LANGUAGES_DIR)
     langFile = languagesDirStr + "/en.json"
     with open(langFile, "r") as f:
       translationsJson = json.load(f)
@@ -78,7 +76,7 @@ class TranslationsExport:
   # 
   def makeCsvFile(self, csvStr):
     lang = self.currentLanguageToExport
-    csvDir = self.csvDir + '/'
+    csvDir = config.CSV_DIR + '/'
     csvFileName = csvDir + lang + '.csv'
     with open(csvFileName, "w") as f:
       f.write(csvStr)
@@ -93,7 +91,7 @@ class TranslationsExport:
     script =  "let translationsJson='" + jsonStr + "';"
     script = script + " let  globalTranslationsObj = JSON.parse(translationsJson);"
     script = script + " function _trns(translation){return(globalTranslationsObj[translation]);}"
-    jsDir = self.jsDir + '/'
+    jsDir = config.JS_DIR + '/'
     jsFileName = jsDir + lang + '.js'
     with open(jsFileName, "w") as f:
       f.write(script)

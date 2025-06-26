@@ -5,6 +5,7 @@
 ########################################################################
 import json
 import csv
+import config
 from pprint import pprint
 from pathlib import Path
 
@@ -14,9 +15,7 @@ class CvsImport:
   #
   # Constructor
   # 
-  def __init__(self, languagesDir, csvDir):
-    self.languagesDir = languagesDir
-    self.csvDir = csvDir
+  def __init__(self):
     self.currentLanguageToImport = ''
     
   #
@@ -24,7 +23,7 @@ class CvsImport:
   #  
   def importAll(self):
     languages = {}
-    for langFile in Path(self.csvDir).glob("*.csv"):
+    for langFile in Path(config.CSV_DIR).glob("*.csv"):
         translationsArr = {}
         with open(langFile, newline='') as csvFile:
           reader = csv.reader(csvFile, delimiter=',', quotechar='|')
@@ -66,13 +65,13 @@ class CvsImport:
   # 
   def makeJsonFile(self, jsonStr):
     lang = self.currentLanguageToImport
-    jsonDir = self.languagesDir + '/'
+    jsonDir = config.LANGUAGES_DIR + '/'
     jsonFileName = jsonDir  + lang + '.json'
     with open(jsonFileName, "w") as f:
       f.write(jsonStr)
 
   def setLanguageFromCsvFileName(self, langFile):
-    csvDirStr = self.csvDir + '/'
+    csvDirStr = config.CSV_DIR+ '/'
     langFileStr = langFile.as_posix()
     langFileStr = langFileStr.replace(csvDirStr, '')
     langFileStr = langFileStr.replace('.csv', '')
