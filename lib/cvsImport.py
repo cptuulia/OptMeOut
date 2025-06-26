@@ -24,7 +24,7 @@ class CvsImport:
   #  
   def importAll(self):
     languages = {}
-    for langFile in self.csvDir.glob("*.csv"):
+    for langFile in Path(self.csvDir).glob("*.csv"):
         translationsArr = {}
         with open(langFile, newline='') as csvFile:
           reader = csv.reader(csvFile, delimiter=',', quotechar='|')
@@ -66,13 +66,13 @@ class CvsImport:
   # 
   def makeJsonFile(self, jsonStr):
     lang = self.currentLanguageToImport
-    jsonDir = self.languagesDir.as_posix() + '/'
+    jsonDir = self.languagesDir + '/'
     jsonFileName = jsonDir  + lang + '.json'
     with open(jsonFileName, "w") as f:
       f.write(jsonStr)
 
   def setLanguageFromCsvFileName(self, langFile):
-    csvDirStr = self.csvDir.as_posix() + '/'
+    csvDirStr = self.csvDir + '/'
     langFileStr = langFile.as_posix()
     langFileStr = langFileStr.replace(csvDirStr, '')
     langFileStr = langFileStr.replace('.csv', '')

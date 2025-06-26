@@ -78,7 +78,7 @@ class TranslationsExport:
   # 
   def makeCsvFile(self, csvStr):
     lang = self.currentLanguageToExport
-    csvDir = self.csvDir.as_posix() + '/'
+    csvDir = self.csvDir + '/'
     csvFileName = csvDir + lang + '.csv'
     with open(csvFileName, "w") as f:
       f.write(csvStr)
@@ -93,7 +93,7 @@ class TranslationsExport:
     script =  "let translationsJson='" + jsonStr + "';"
     script = script + " let  globalTranslationsObj = JSON.parse(translationsJson);"
     script = script + " function _trns(translation){return(globalTranslationsObj[translation]);}"
-    jsDir = self.jsDir.as_posix() + '/'
+    jsDir = self.jsDir + '/'
     jsFileName = jsDir + lang + '.js'
     with open(jsFileName, "w") as f:
       f.write(script)
