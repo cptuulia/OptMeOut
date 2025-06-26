@@ -15,7 +15,7 @@ class TranslationsExport:
   # Constructor
   # 
   def __init__(self):
-    self.englishArr = self.setEnglishArr()
+    self.englishArr = self.__setEnglishArr()
     self.currentLanguageToExport = ''
     
   #
@@ -28,38 +28,38 @@ class TranslationsExport:
           languages[langFile.stem] = json.load(f)
     for lang, translations in languages.items():
       self.currentLanguageToExport = lang
-      self.exportLanguage(translations)
+      self._exportLanguage(translations)
 
   #
   # Set the array of english translations
   # This will be as a source translation in csv files
   #  
-  def setEnglishArr(self):
+  def __setEnglishArr(self):
     self.englishArr = {}
     languagesDirStr = str(config.LANGUAGES_DIR)
     langFile = languagesDirStr + "/en.json"
     with open(langFile, "r") as f:
       translationsJson = json.load(f)
     templateKey = list(translationsJson)[0]
-    return self.getTranslationsArray(self.englishArr, '', translationsJson[templateKey])
+    return self.__getTranslationsArray(self.englishArr, '', translationsJson[templateKey])
 
   #
   # Export the json of one language
   # 
-  def exportLanguage(self, translationsJson):
+  def _exportLanguage(self, translationsJson):
     valuesArr = {};
     templateKey = list(translationsJson)[0]
     itemsJson = translationsJson[templateKey]
-    valuesArr = self.getTranslationsArray(valuesArr, '', itemsJson)
+    valuesArr = self.__getTranslationsArray(valuesArr, '', itemsJson)
     
-    csvStr = self.makeCsvContent(valuesArr)
-    self.makeCsvFile(csvStr)
-    self.makeJsFile(valuesArr)
+    csvStr = self.__makeCsvContent(valuesArr)
+    self.__makeCsvFile(csvStr)
+    self.__makeJsFile(valuesArr)
     
   #
   # Make csv content from translation arrays
   # 
-  def makeCsvContent(self, valuesArr):
+  def __makeCsvContent(self, valuesArr):
     csv = "Key,English,Translation (" + self.currentLanguageToExport.upper() + ")\n"
     for key in self.englishArr:
       csv = csv +  key + config.CSV_FIELD_SEPARATOR
@@ -74,7 +74,7 @@ class TranslationsExport:
   #
   # Make csv file from translation arrays
   # 
-  def makeCsvFile(self, csvStr):
+  def __makeCsvFile(self, csvStr):
     lang = self.currentLanguageToExport
     csvDir = config.CSV_DIR + '/'
     csvFileName = csvDir + lang + '.csv'
@@ -84,7 +84,7 @@ class TranslationsExport:
   #
   # Make javascript file from translation arrays
   # 
-  def makeJsFile(self, translationsArr):
+  def __makeJsFile(self, translationsArr):
     
     jsonStr = json.dumps(translationsArr)
     lang = self.currentLanguageToExport
@@ -100,7 +100,7 @@ class TranslationsExport:
   #
   # Get translations array from the json
   # 
-  def getTranslationsArray(self, translationsJson,  baseKey, itemsJson):
+  def __getTranslationsArray(self, translationsJson,  baseKey, itemsJson):
     for key in itemsJson.keys():
       arrayKey =  baseKey + key 
       value = itemsJson[key]
@@ -111,6 +111,6 @@ class TranslationsExport:
               subKey = baseKey  + key + "."
           else:
             subKey = key + "."
-          translationsJson = self.getTranslationsArray(translationsJson, subKey, value)
+          translationsJson = self.__getTranslationsArray(translationsJson, subKey, value)
     return translationsJson
 

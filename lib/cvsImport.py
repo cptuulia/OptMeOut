@@ -32,20 +32,20 @@ class CvsImport:
             if (index > 0):
               key = row[0];
               translation = row[2];
-              self.setTranslation(translationsArr, key, translation)
+              self.__setTranslation(translationsArr, key, translation)
             index = index + 1
         result = {
           'template' : translationsArr
         }
-        self.setLanguageFromCsvFileName(langFile)
+        self.__setLanguageFromCsvFileName(langFile)
         jsonStr = json.dumps(result, indent = 4)
-        self.makeJsonFile(jsonStr)
+        self.__makeJsonFile(jsonStr)
 
 
   #
   # Set translation to translationsArr
   #
-  def setTranslation(self, translationsArr, key, translationValue):
+  def __setTranslation(self, translationsArr, key, translationValue):
       keys = key.split('.')
       rootKey = keys[0];
       # one dimensional array or end of multidimensional array
@@ -57,20 +57,23 @@ class CvsImport:
           translationsArr[rootKey] = {}
         keys.pop(0)
         subKeys = '.'.join(keys)
-        translationsArr[rootKey] = self.setTranslation(translationsArr[rootKey],subKeys, translationValue)
+        translationsArr[rootKey] = self.__setTranslation(translationsArr[rootKey],subKeys, translationValue)
       return translationsArr
 
   #
   # Make json file from translation json
   # 
-  def makeJsonFile(self, jsonStr):
+  def __makeJsonFile(self, jsonStr):
     lang = self.currentLanguageToImport
     jsonDir = config.LANGUAGES_DIR + '/'
     jsonFileName = jsonDir  + lang + '.json'
     with open(jsonFileName, "w") as f:
       f.write(jsonStr)
 
-  def setLanguageFromCsvFileName(self, langFile):
+  #
+  # set language by reading it from the CVS file name
+  # 
+  def __setLanguageFromCsvFileName(self, langFile):
     csvDirStr = config.CSV_DIR+ '/'
     langFileStr = langFile.as_posix()
     langFileStr = langFileStr.replace(csvDirStr, '')

@@ -7,33 +7,33 @@ class Translate:
   #
   def translate(self,template, templateFileName, overrides):
     html = template
-    templateName = self.getTemplateName(templateFileName)
+    templateName = self.__getTemplateName(templateFileName)
     translations = json.dumps(overrides.get(templateName));
     json_object = json.loads(translations)
-    html = self.translateSet(html, '', json_object)
+    html = self.__translateSet(html, '', json_object)
     return html
   
   #
-  # TRanslate set
+  # Translate 
   #  
-  def translateSet(self, html, baseKey, json_object):
+  def __translateSet(self, html, baseKey, json_object):
     for key in json_object.keys():
-        replacementKey = "{{" + baseKey + key +"}}"
-        replacement = json_object[key]
-        if ( isinstance(replacement, str)):
-            html = html.replace(replacementKey, replacement)
+        placeHolder = "{{" + baseKey + key +"}}"
+        translation = json_object[key]
+        if ( isinstance(translation, str)):
+            html = html.replace(placeHolder, translation)
         else:
             if (baseKey != ""):
                 subKey = baseKey  + key + "."
             else:
                   subKey = key + "."
-            html = self.translateSet(html, subKey, replacement)
+            html = self.__translateSet(html, subKey, translation)
     return html
 
   #
   # return the template name, so that it can be recognized by translations
   #
-  def getTemplateName(self, templateFileName):
+  def __getTemplateName(self, templateFileName):
     template = templateFileName
     template = template.replace('.html', '');
     template = template.replace ("src/", '');
