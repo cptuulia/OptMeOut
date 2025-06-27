@@ -1,5 +1,5 @@
 # templates
-TEMPLATE_PATH ="src/template.html"
+TEMPLATE_PATH ="src"
 # steps
 STEPS_PATH = "src/steps.json"
 # languages json files
