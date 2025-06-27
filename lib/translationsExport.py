@@ -3,6 +3,7 @@
 # A class to export translations json to cvs and javascript files
 #
 ########################################################################
+
 import json
 import config
 from pprint import pprint
@@ -15,7 +16,7 @@ class TranslationsExport:
   # Constructor
   # 
   def __init__(self):
-    # self.englishArr ia used as a column to be translated in the
+    # englishArr ia used as a column to be translated in the
     # current language
     self.englishArr = self.__setEnglishArr()
     self.currentLanguageToExport = ''
@@ -76,7 +77,7 @@ class TranslationsExport:
   # 
   def __makeCsvFile(self, csvStr):
     lang = self.currentLanguageToExport
-    csvDir = config.CSV_DIR + '/'
+    csvDir = config.CSV_DIR + '/export/'
     csvFileName = csvDir + lang + '.csv'
     with open(csvFileName, "w") as f:
       f.write(csvStr)

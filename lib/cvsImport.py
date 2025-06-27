@@ -23,7 +23,7 @@ class CvsImport:
   #  
   def importAll(self):
     languages = {}
-    for langFile in Path(config.CSV_DIR).glob("*.csv"):
+    for langFile in Path(config.CSV_DIR+ '/import').glob("*.csv"):
         translationsArr = {}
         with open(langFile, newline='') as csvFile:
           reader = csv.reader(csvFile, delimiter= config.CSV_FIELD_SEPARATOR, quotechar='|')
@@ -75,7 +75,7 @@ class CvsImport:
   # set language by reading it from the CVS file name
   # 
   def __setLanguageFromCsvFileName(self, langFile):
-    csvDirStr = config.CSV_DIR+ '/'
+    csvDirStr = config.CSV_DIR+ '/import/'
     langFileStr = langFile.as_posix()
     langFileStr = langFileStr.replace(csvDirStr, '')
     langFileStr = langFileStr.replace('.csv', '')
