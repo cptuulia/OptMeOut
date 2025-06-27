@@ -3,8 +3,8 @@
 /__pycache__/*
 /lib/__pycache__
 /lib/__pycache__/*
-/dist
-/dist/*
+#/dist
+#/dist/*
 /src/csv
 /src/csv/*
 /src/csv/import/
