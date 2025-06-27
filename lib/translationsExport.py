@@ -15,6 +15,8 @@ class TranslationsExport:
   # Constructor
   # 
   def __init__(self):
+    # self.englishArr ia used as a column to be translated in the
+    # current language
     self.englishArr = self.__setEnglishArr()
     self.currentLanguageToExport = ''
     
@@ -40,8 +42,7 @@ class TranslationsExport:
     langFile = languagesDirStr + "/en_GB.json"
     with open(langFile, "r") as f:
       translationsJson = json.load(f)
-    templateKey = list(translationsJson)[0]
-    return self.__getTranslationsArray(self.englishArr, '', translationsJson[templateKey])
+    return self.__getTranslationsArray(self.englishArr, '', translationsJson)
 
   #
   # Export the json of one language
@@ -49,8 +50,7 @@ class TranslationsExport:
   def _exportLanguage(self, translationsJson):
     valuesArr = {};
     templateKey = list(translationsJson)[0]
-    itemsJson = translationsJson[templateKey]
-    valuesArr = self.__getTranslationsArray(valuesArr, '', itemsJson)
+    valuesArr = self.__getTranslationsArray(valuesArr, '', translationsJson)
     
     csvStr = self.__makeCsvContent(valuesArr)
     self.__makeCsvFile(csvStr)
@@ -84,6 +84,11 @@ class TranslationsExport:
   #
   # Make javascript file from translation arrays
   # 
+  # Example:
+  # let translationsJson='{"pageTitle": "Compose Your Letter", "previous": "Previous", "next": "Next", "step1.pertires.address.title": "Address"}'; 
+  # let  globalTranslationsObj = JSON.parse(translationsJson); 
+  # function _trns(translation){return(globalTranslationsObj[translation]);}
+  # 
   def __makeJsFile(self, translationsArr):
     
     jsonStr = json.dumps(translationsArr)
@@ -99,6 +104,23 @@ class TranslationsExport:
    
   #
   # Get translations array from the json
+  # example
+  #   'step1':
+  #     { 
+  #       'title': 'titel',
+  #       'properties':{
+  #         'name' : 'Naam', 
+  #         'address': 'Adres
+  #     }
+  # }
+  # 
+  #  This fills the replacements:
+  #   {
+  #     'step1.title' : 'titel',
+  #     'step1.properties.name' : 'Naam',
+  #     'step1.properties.address' : 'Adres'
+  #   }
+  #  
   # 
   def __getTranslationsArray(self, translationsJson,  baseKey, itemsJson):
     for key in itemsJson.keys():

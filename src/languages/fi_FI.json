@@ -1,52 +1,50 @@
 {
-    "template": {
-        "pageTitle": "Laadi kirjeesi",
-        "previous": "Edellinen",
-        "next": "Seuraava",
-        "step1": {
-            "title": "Nimi ja osoite",
-            "properties": {
-                "name": {
-                    "title": "Koko nimi"
-                },
-                "address": {
-                    "title": "Osoite"
-                }
+    "pageTitle": "Laadi kirjeesi",
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "step1": {
+        "title": "Nimi ja osoite",
+        "properties": {
+            "name": {
+                "title": "Koko nimi"
+            },
+            "address": {
+                "title": "Osoite"
             }
-        },
-        "step2": {
-            "title": "Optout Out",
-            "properties": {
-                "primaryUse": {
-                    "title": "Ensisijainen k\u00e4ytt\u00f6"
-                },
-                "secondaryUse": {
-                    "title": "Toissijainen k\u00e4ytt\u00f6"
-                }
+        }
+    },
+    "step2": {
+        "title": "Optout Out",
+        "properties": {
+            "primaryUse": {
+                "title": "Ensisijainen k\u00e4ytt\u00f6"
+            },
+            "secondaryUse": {
+                "title": "Toissijainen k\u00e4ytt\u00f6"
             }
-        },
-        "step3": {
-            "title": "GP Nimi",
-            "properties": {
-                "gpName": {
-                    "title": "Etsi GP nimell\u00e4"
-                }
+        }
+    },
+    "step3": {
+        "title": "GP Nimi",
+        "properties": {
+            "gpName": {
+                "title": "Etsi GP nimell\u00e4"
             }
-        },
-        "step4": {
-            "title": "Valitse maksum\u00e4\u00e4r\u00e4",
-            "properties": {
-                "amount": {
-                    "title": "M\u00e4\u00e4r\u00e4 (\u20ac)"
-                }
+        }
+    },
+    "step4": {
+        "title": "Valitse maksum\u00e4\u00e4r\u00e4",
+        "properties": {
+            "amount": {
+                "title": "M\u00e4\u00e4r\u00e4 (\u20ac)"
             }
-        },
-        "step5": {
-            "title": "Tilaa uutiskirje",
-            "properties": {
-                "subscribe": {
-                    "title": "Tilaa?"
-                }
+        }
+    },
+    "step5": {
+        "title": "Tilaa uutiskirje",
+        "properties": {
+            "subscribe": {
+                "title": "Tilaa?"
             }
         }
     }

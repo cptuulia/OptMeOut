@@ -34,9 +34,7 @@ class CvsImport:
               translation = row[2];
               self.__setTranslation(translationsArr, key, translation)
             index = index + 1
-        result = {
-          'template' : translationsArr
-        }
+        result = translationsArr
         self.__setLanguageFromCsvFileName(langFile)
         jsonStr = json.dumps(result, indent = 4)
         self.__makeJsonFile(jsonStr)
@@ -44,6 +42,9 @@ class CvsImport:
 
   #
   # Set translation to translationsArr
+  # 
+  # Example:
+  #  
   #
   def __setTranslation(self, translationsArr, key, translationValue):
       keys = key.split('.')
