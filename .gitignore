@@ -5,8 +5,8 @@
 /lib/__pycache__/*
 /dist
 /dist/*
-#/src/csv
-#/src/csv/*
+/src/csv
+/src/csv/*
 /src/csv/import/
 /src/csv/import/*
 /src/csv/export/
