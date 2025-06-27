@@ -4,4 +4,10 @@
 /lib/__pycache__
 /lib/__pycache__/*
 /dist
-/dist/*s
+/dist/*
+/src/csv
+/src/csv/*
+/src/csv/import/
+/src/csv/import/*
+/src/csv/export/
+/src/csv/export/*
