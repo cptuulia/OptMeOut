@@ -12,12 +12,12 @@ from lib.htmlGenerator import HtmlGenerator
 
 if __name__ == "__main__":
     #initialize_folders()
-    #cvsImport = CvsImport()
-    #cvsImport.importAll()
+    cvsImport = CvsImport()
+    cvsImport.importAll()
     htmlGenerator = HtmlGenerator()
     htmlGenerator.generate()
-    #translationsExport = TranslationsExport()
-    #translationsExport.exportAll()
+    translationsExport = TranslationsExport()
+    translationsExport.exportAll()
 
    
   

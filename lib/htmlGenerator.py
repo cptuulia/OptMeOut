@@ -16,14 +16,16 @@ class HtmlGenerator:
     def generate(self):
       
       path = config.TEMPLATE_PATH + '/app'
-      self.__loadLanguages(config.TEMPLATE_PATH + '/index.html')
+      self.__generateLanguageTemplates(config.TEMPLATE_PATH + '/index.html')
       self.__crawl(path)
       return    
       
-    def __loadLanguages(self, srcFile):
+    #
+    # Generate the language templates for the given language
+    #  
+    def __generateLanguageTemplates(self, srcFile):
         translateObj = Translate()
                                                                       
-        # Load languages
         languages = {}
         for lang_file in Path(config.LANGUAGES_DIR).glob("*.json"):
           with open(lang_file, "r") as f:
@@ -42,6 +44,9 @@ class HtmlGenerator:
               f.write(html)
           print(f"Generated {output_path}")
 
+    #
+    # Get file name for the given template and language
+    #
     def __distFileName(self, srcFile, lang) :
         srcFile = srcFile.replace('src/' ,'')
         parts = srcFile.split('.')
@@ -59,7 +64,7 @@ class HtmlGenerator:
                 # crawl a sub folder
                 self.__crawl(str(file))
             else:
-                self.__loadLanguages(str(file))
+                self.__generateLanguageTemplates(str(file))
     #
     # make the given source folder in the dist folder
     # if it does not exist
@@ -68,5 +73,3 @@ class HtmlGenerator:
         srcPath = srcPath.replace('src/' ,'')
         distPath = config.DIST_DIR + '/' + srcPath
         Path(distPath).mkdir(exist_ok=True)
-        #pprint(srcPath)
-        #pprint(distPath)   
