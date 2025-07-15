@@ -48,7 +48,7 @@ to the folder ```src/csv/import``` and rename it after the new language local
 in this case nl_BE.csv
 ```src/csv/export/nl_BE.csv```
 The locale codes you can find in
-https://saimana.com/list-of-country-locale-code/
+```lib/languageCodes.py```
 
 Open the file and modify the third column, ```Translation (EN_GB)```
 as  ```Translation (NL_BE)``` and translate the third column.
