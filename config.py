@@ -1,5 +1,5 @@
-# templates
-TEMPLATE_PATH ="src"
+# templates source
+SRC_TEMPLATE_PATH ="src/react"
 # steps
 STEPS_PATH = "src/steps.json"
 # languages json files
@@ -25,3 +25,6 @@ JS_DIR = "dist/js"
 
 # character to separate csv columns
 CSV_FIELD_SEPARATOR = ";"
+
+# default language
+DEFAULT_LANGUAGE="nl_NL"
