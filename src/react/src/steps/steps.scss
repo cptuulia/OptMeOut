@@ -17,10 +17,47 @@
     text-align: center;
 }
 
+#step1Buttons {
+    margin: auto;
+    width: 40%;
+}
+
+#step1Buttons .tellMeMore {
+    float: left;
+    width: fit-content;
+    background-image: url("/src/assets/img/arrowDown_{{LANGUAGE_CODE}}.png");
+    background-repeat: no-repeat;
+    padding-right: 12px;
+    padding-top: 5px;
+    margin-right: 1em;
+    background-size: 10px;
+    background-position: right 10px;
+    font-size: 15px;
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+.buttonActive {
+    float: left;
+    width: fit-content;
+    background-color: red;
+    font-weight: bold;
+    color: $veryLightGrey ;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
 
 @media only screen and (max-width: 1000px) {
     #step h1 {
         font-size: 30px;
         margin-bottom: 20px;
     }
+
+    #step1Buttons .tellMeMore {
+    margin-bottom: 20px;
+}
 }

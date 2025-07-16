@@ -5,5 +5,13 @@
     "step1": {
         "title": "Title NL ",
         "intro": " Intro NL "
+    },
+        "button": {
+        "tellmemore": "Tell me more NL",
+        "OptMeOut": "OptMeOut NL",
+        "readmore": {
+            "less": "less NL",
+            "more": "more NL"
+        }
     }
 }

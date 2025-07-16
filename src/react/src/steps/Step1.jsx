@@ -13,6 +13,10 @@ function Step1() {
                         <p class="intro">
                                 [[step1.intro]]
                         </p>
+                        <div id="step1Buttons">
+                                <div class="tellMeMore">[[button.tellmemore]]</div>
+                                <div class="buttonActive">[[button.OptMeOut]]</div>
+                        </div>
                 </div>
 
         )

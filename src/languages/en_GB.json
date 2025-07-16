@@ -3,7 +3,15 @@
         "about": "about"
     },
     "step1": {
-        "title": "With European Health Data Space (EHDS) you will lose control over who can access your medical records. ",
+        "title": "With European Health Data Space (EHDS) you will lose control over who can access your medical records.",
         "intro": "Your data can be used by researchers, governments, and commercial companies. You can object to this with an ‘opt-out’, for the two ways your data can be used. "
+    },
+    "button": {
+        "tellmemore": "Tell me more",
+        "OptMeOut": "OptMeOut",
+        "readmore": {
+            "less": "less",
+            "more": "more"
+        }
     }
 }
