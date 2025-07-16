@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import './style/App_{{LANGUAGE_CODE}}.scss'
 
-import LanguageSelect from "./components/LanguageSelect/LanguageSelect_{{LANGUAGE_CODE}}.jsx";
+
+import Header from "./components/Header/Header_{{LANGUAGE_CODE}}.jsx";
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      TEST
-       <LanguageSelect/>
+      <header> <Header /></header>
+
     </>
   )
 }

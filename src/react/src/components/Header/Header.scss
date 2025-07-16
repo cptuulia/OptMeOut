@@ -1,0 +1,34 @@
+@import '/src/style/theme_{{LANGUAGE_CODE}}.scss';
+
+#headerLanguageSelect {
+    float: right;
+}
+
+
+#headerLanguageSelect select {
+    margin: 0px;
+    padding: 0.2em;
+    background-color: $green;
+    border: none;
+    color: $veryLightGrey;
+    font-size: 1em;
+    width: 5em;
+    overflow: hidden;
+}
+
+#headerLanguageSelect option {
+    padding: 10px;
+    color: $veryLightGrey;
+    border: none;
+}
+
+#headerAbout {
+    float: right;
+    margin-right: 1em;
+    margin-top: 0.25em;
+    color: $green;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: -webkit-grab;
+    cursor: grab;
+}

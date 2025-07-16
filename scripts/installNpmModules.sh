@@ -3,7 +3,7 @@
 echo make templates
 ../dockerRunBuildTemplates.sh 
 cd dist
-npm stop dev
+#npm stop dev
 echo build npm modules
 rm -rf node_modules 
 npm install
