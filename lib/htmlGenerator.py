@@ -60,24 +60,25 @@ class HtmlGenerator:
     def __generateLanguageTemplates(self, srcFile):
         translateObj = Translate()
         languageCodes = LanguageCodes()
-                                                             
-        with open( Path(srcFile), "r") as f:
-          template = f.read()
-          templateName = f.name
-        for lang, overrides in self.languages.items():
-          html = translateObj.translate(template, templateName, overrides)
-          # update language codes
-          html = html.replace('{{LANGUAGE_CODE}}', lang)
-          # update language select options
-          languageHtmlOptions = languageCodes.get_language_options_html(lang,self.languages)
-          html = html.replace('{{LANGUAGE_HTML_OPTIONS}}', languageHtmlOptions)
-          # write file
-          distFile = self.__distFileName(srcFile, lang)
-          output_path = Path(config.DIST_DIR) / f"{distFile}"
-          with open(output_path, "w") as f:
-              f.write(html)
-          print(f"Generated {output_path}")
-
+        try:                                        
+            with open( Path(srcFile), "r") as f:
+                template = f.read()
+                templateName = f.name
+            for lang, overrides in self.languages.items():
+                html = translateObj.translate(template, templateName, overrides)
+                # update language codes
+                html = html.replace('{{LANGUAGE_CODE}}', lang)
+                # update language select options
+                languageHtmlOptions = languageCodes.get_language_options_html(lang,self.languages)
+                html = html.replace('{{LANGUAGE_HTML_OPTIONS}}', languageHtmlOptions)
+                # write file
+                distFile = self.__distFileName(srcFile, lang)
+                output_path = Path(config.DIST_DIR) / f"{distFile}"
+                with open(output_path, "w") as f:
+                    f.write(html)
+                print(f"Generated {output_path}")
+        except UnicodeDecodeError:
+            pass # Found non-text data
     #
     # Make file index.html from the default language index file
     #
