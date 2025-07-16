@@ -1,0 +1,26 @@
+@import '/src/style/theme_{{LANGUAGE_CODE}}.scss';
+
+#step h1 {
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 1.2em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#step .intro {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2em;
+    color: $grey;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    #step h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+}

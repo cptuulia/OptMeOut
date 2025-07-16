@@ -14,7 +14,7 @@ function Header() {
                                 <LanguageSelect />
                         </div>
                         <div id="headerAbout">
-                                About
+                                [[menu.about]]
                         </div>
                 </>
 
