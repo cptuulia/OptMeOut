@@ -1,0 +1,27 @@
+@import '/src/style/theme_{{LANGUAGE_CODE}}.scss';
+
+body {
+  background-color: $lightGrey;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  background-image: url("/src/assets/img/bgr_{{LANGUAGE_CODE}}.png");
+  background-size: 100%;
+  min-height: 100vh;
+}
+
+#root {
+  min-width: 940px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: $veryLightGrey;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  #root {
+    width: 100%;
+  }
+}

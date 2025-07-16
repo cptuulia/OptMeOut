@@ -44,8 +44,8 @@ class HtmlGenerator:
     #
     # Copy the react files in the root folder
     #
-    # read all of the files in the root folder and copy them
-    # Like all config files
+    # Read all of the files in the root folder and copy them
+    # Like all react config  files
     #
     def __copy_react_root_files(self):
         
@@ -72,13 +72,25 @@ class HtmlGenerator:
                 languageHtmlOptions = languageCodes.get_language_options_html(lang,self.languages)
                 html = html.replace('{{LANGUAGE_HTML_OPTIONS}}', languageHtmlOptions)
                 # write file
-                distFile = self.__distFileName(srcFile, lang)
-                output_path = Path(config.DIST_DIR) / f"{distFile}"
-                with open(output_path, "w") as f:
+                targetFile  = self.__get_distFile(srcFile, lang)
+                with open(targetFile, "w") as f:
                     f.write(html)
-                print(f"Generated {output_path}")
+                print(f"Generated {targetFile}")
         except UnicodeDecodeError:
+            for lang, overrides in self.languages.items():
+                targetFile  = self.__get_distFile(srcFile, lang)
+                shutil.copy(srcFile, targetFile)
+                print(f"Copied {targetFile}")
             pass # Found non-text data
+
+    #
+    # Get the target path for the given source file
+    #
+    def __get_distFile(self, srcFile, lang):
+        distFile = self.__distFileName(srcFile, lang)
+        targetFile = Path(config.DIST_DIR) / f"{distFile}"
+        return targetFile
+
     #
     # Make file index.html from the default language index file
     #
