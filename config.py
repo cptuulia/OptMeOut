@@ -27,4 +27,4 @@ JS_DIR = "dist/js"
 CSV_FIELD_SEPARATOR = ";"
 
 # default language
-DEFAULT_LANGUAGE="nl_NL"
+DEFAULT_LANGUAGE="en_GB"

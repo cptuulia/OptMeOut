@@ -36,7 +36,7 @@ class Translate:
   #  
   def __translateSet(self, html, baseKey, json_object):
     for key in json_object.keys():
-        placeHolder = "{{" + baseKey + key +"}}"
+        placeHolder = "[[" + baseKey + key +"]]"
         translation = json_object[key]
         if ( isinstance(translation, str)):
             # We hav have value to replace
@@ -49,6 +49,15 @@ class Translate:
             else:
                   subKey = key + "."
             html = self.__translateSet(html, subKey, translation)
+    html = self.__formatHtml(html)        
+    return html
+
+  #
+  # Format html with special rules
+  #
+  def __formatHtml(self, html):
+    # ‘opt-out’ must be red
+    html = html.replace("‘opt-out’",'<span style={{color: "red"}}>' + "'" + 'opt-out' + "'" + '</span>' )
     return html
 
   #

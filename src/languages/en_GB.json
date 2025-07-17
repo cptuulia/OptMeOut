@@ -1,51 +1,31 @@
 {
-    "pageTitle": "Compose Your Letter",
-    "previous": "Previous",
-    "next": "Next",
+    "menu": {
+        "about": "about"
+    },
+    "button": {
+        "tellmemore": "Tell me more",
+        "OptMeOut": "OptMeOut",
+        "readmore": {
+            "less": "less",
+            "more": "more"
+        }
+    },
     "step1": {
-        "title": "Name and Address",
-        "properties": {
-            "name": {
-                "title": "Full Name"
-            },
-            "address": {
-                "title": "Address"
-            }
-        }
-    },
-    "step2": {
-        "title": "Optout Out",
-        "properties": {
-            "primaryUse": {
-                "title": "Primary use"
-            },
-            "secondaryUse": {
-                "title": "Secondary use"
-            }
-        }
-    },
-    "step3": {
-        "title": "GP Name",
-        "properties": {
-            "gpName": {
-                "title": "Search GP Name"
-            }
-        }
-    },
-    "step4": {
-        "title": "Choose amount to pay",
-        "properties": {
-            "amount": {
-                "title": "Amount (\u00a3)"
-            }
-        }
-    },
-    "step5": {
-        "title": "Subscribe to Newsletter",
-        "properties": {
-            "subscribe": {
-                "title": "Subscribe?"
-            }
+        "title": "With European Health Data Space (EHDS) you will lose control over who can access your medical records.",
+        "intro": "Your data can be used by researchers, governments, and commercial companies. You can object to this with an ‘opt-out’, for the two ways your data can be used. ",
+        "optout1": {
+            "h1": "Opt-out for primary use",
+            "p": "O50 words Curabitur malesuada purus vel erat pharetra a placerat nibh facilisis. Phasellus gravida libero vitae nisi aliquam pharetra. Quisque dignissim justo sit amet odio consequat laoreet. Morbi blandit, nisi sit amet egestas ullamcorper, enim leo placerat sapien, eu egestas enim neque at mauris. Nulla facilisi. In non ligula. Nulla facilisi ligula.",
+            "readmore": "O50 words Curabitur malesuada purus vel erat pharetra a placerat nibh facilisis. Phasellus gravida libero vitae nisi aliquam pharetra. Quisque dignissim justo sit amet odio consequat laoreet. Morbi blandit, nisi sit amet egestas ullamcorper, enim leo placerat sapien, eu egestas enim neque at mauris. Nulla facilisi. In non ligula. Nulla facilisi ligula."
+        },
+        "optout2": {
+            "h1": "Opt-out for secondary use",
+            "p": "O50 words Curabitur malesuada purus vel erat pharetra a placerat nibh facilisis. Phasellus gravida libero vitae nisi aliquam pharetra. Quisque dignissim justo sit amet odio consequat laoreet. Morbi blandit, nisi sit amet egestas ullamcorper, enim leo placerat sapien, eu egestas enim neque at mauris. Nulla facilisi. In non ligula. Nulla facilisi ligula.",
+            "readmore": "O50 words Curabitur malesuada purus vel erat pharetra a placerat nibh facilisis. Phasellus gravida libero vitae nisi aliquam pharetra. Quisque dignissim justo sit amet odio consequat laoreet. Morbi blandit, nisi sit amet egestas ullamcorper, enim leo placerat sapien, eu egestas enim neque at mauris. Nulla facilisi. In non ligula. Nulla facilisi ligula."
+        },
+        "disclaimer": {
+            "h1": "Please note",
+            "p": "50 words Curabitur malesuada purus vel erat pharetra a placerat nibh facilisis. Phasellus gravida libero vitae nisi aliquam pharetra. Quisque dignissim justo sit amet odio consequat laoreet. Morbi blandit, nisi sit amet egestas ullamcorper, enim leo placerat sapien, eu egestas enim neque at mauris. Nulla facilisi. In non ligula. Nulla facilisi ligula."
         }
     }
 }

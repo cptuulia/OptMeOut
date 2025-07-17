@@ -1,14 +1,36 @@
 import { useState } from 'react'
-import './App_{{LANGUAGE_CODE}}.css'
 
-import LanguageSelect from "./components/LanguageSelect/LanguageSelect_{{LANGUAGE_CODE}}.jsx";
+
+import './style/App_{{LANGUAGE_CODE}}.scss'
+import Header from "./components/Header/Header_{{LANGUAGE_CODE}}.jsx";
+import Step1 from "./steps/Step1_{{LANGUAGE_CODE}}.jsx";
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentStep, setCurrentStep] = useState(1)
+
+  //
+  // Change Step
+  //
+  const changeStep = (stepNUmber, e) => {
+    setCurrentStep(stepNUmber);
+  };
+
 
   return (
     <>
-      TEST
-       <LanguageSelect/>
+
+      <header> <Header /></header>
+
+
+      <div id="mainContent">
+        {currentStep == 1 &&
+          <Step1
+            emitChangeStep={changeStep}
+          />}
+
+        {currentStep == 2 &&
+          <div>Step2</div>
+        }
+      </div>
     </>
   )
 }
