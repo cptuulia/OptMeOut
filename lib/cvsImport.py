@@ -8,7 +8,7 @@ import csv
 import config
 from pprint import pprint
 from pathlib import Path
-
+from lib.csvFormate import CsvFormate
 
 class CvsImport:
   
@@ -51,7 +51,7 @@ class CvsImport:
       rootKey = keys[0];
       # one dimensional array or end of multidimensional array
       if (len(keys)  == 1):
-        translationsArr[key] = translationValue
+        translationsArr[key] =  CsvFormate.format_text_from_csv_to_json(translationValue)
       else:
         # multidimensional array
         if (translationsArr.get(rootKey) is None):

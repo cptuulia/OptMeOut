@@ -8,6 +8,7 @@ import json
 import config
 from pprint import pprint
 from pathlib import Path
+from lib.csvFormate import CsvFormate
 
 
 class TranslationsExport:
@@ -72,10 +73,13 @@ class TranslationsExport:
         csv = csv + "\n"
     return csv
 
+
+
   #
   # Make csv file from translation arrays
   # 
   def __makeCsvFile(self, csvStr):
+    csvStr =  CsvFormate.format_text_from_json_to_csv(csvStr)
     lang = self.currentLanguageToExport
     csvDir = config.CSV_DIR + '/export/'
     csvFileName = csvDir + lang + '.csv'
