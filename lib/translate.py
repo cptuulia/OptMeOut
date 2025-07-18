@@ -59,12 +59,12 @@ class Translate:
     # ‘opt-out’ must be red
     html = html.replace("‘opt-out’",'<span style={{color: "red"}}>' + "'" + 'opt-out' + "'" + '</span>' )
 
-    # Text beteen _RED: and  :RED_ to red
+    # Text beteen <red> and  </red> to red
     # 
-    # _RED:Tell  me more:RED_  => <span style={{color: "red"}}>Tell  me more</span>
+    # <red>Tell  me more</red>  => <span style={{color: "red"}}>Tell  me more</span>
     #
-    html = html.replace("_RED:",'<span style={{color: "red"}}>' )
-    html = html.replace(":RED_", '</span>' )
+    html = html.replace("<red>",'<span style={{color: "red"}}>' )
+    html = html.replace("</red>", '</span>' )
     return html
 
   #
