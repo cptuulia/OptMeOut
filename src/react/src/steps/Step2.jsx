@@ -19,6 +19,8 @@ function Step2(props) {
                         <h1>[[page.fallback.header]]</h1>
                         <p1>[[page.fallback.intro]]</p1>
                         <div className='clearBoth'></div>
+
+                        {/* Buttons */}
                         <div className='buttonsRow'>
                                 <div
                                         className="buttonDefault"
@@ -28,7 +30,7 @@ function Step2(props) {
                                 </div>
                                 <div 
                                         className="buttonDefault"
-                                        onClick={(e) => props.emitChangeSection("step2", e)}
+                                        onClick={(e) => props.emitChangeSection("selectCountry", e)}
                                 >
                                         [[page.fallback.button]]
                                 </div>

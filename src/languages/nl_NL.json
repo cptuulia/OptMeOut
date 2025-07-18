@@ -3,20 +3,20 @@
         "about": "NL about",
         "locale": "NL"
     },
-     "page" : {
-        "fallback" : {
-            "header" : "NL This website provides EU citizens a way to provisionally ‘opt-out’ from the EHDS",
-            "intro" : "NL Our mission is provide all EU citizens with a means to object to being registred in the European Health Data Space (EHDS). Please in by clicking &quot;Select Country&quot;  if it is available for your country or checkout the the &quot;about&quot; button  for more info. ",
-            "button" : "NL Select country"
+    "page": {
+        "fallback": {
+            "header": "NL This website provides EU citizens a way to provisionally ‘opt-out’ from the EHDS",
+            "intro": "NL Our mission is provide all EU citizens with a means to object to being registred in the European Health Data Space (EHDS). Please in by clicking &quot;Select Country&quot;  if it is available for your country or checkout the the &quot;about&quot; button  for more info. ",
+            "button": "NL Select country"
         },
-        "about" :{
-            "title" : "NL About",
-            "h1" : "NL I am a h1",
-            "p1" : "NL I am paragraph 1",
-            "p2" : "NL I am paragraph 2",
-            "h2" : "NL I am h2",
-            "p3" : "NL I am paragraph 3",
-            "p4" : "NL I am paragraph 4"
+        "about": {
+            "title": "NL About",
+            "h1": "NL I am a h1",
+            "p1": "NL I am paragraph 1",
+            "p2": "NL I am paragraph 2",
+            "h2": "NL I am h2",
+            "p3": "NL I am paragraph 3",
+            "p4": "NL I am paragraph 4"
         }
     },
     "button": {
@@ -43,6 +43,11 @@
         "disclaimer": {
             "h1": "NL Please note",
             "p": "NL 50 words Curabitur malesuada purus vel erat pharetra a placerat nibh facilisis. Phasellus gravida libero vitae nisi aliquam pharetra. Quisque dignissim justo sit amet odio consequat laoreet. Morbi blandit, nisi sit amet egestas ullamcorper, enim leo placerat sapien, eu egestas enim neque at mauris. Nulla facilisi. In non ligula. Nulla facilisi ligula."
+        }
+    },
+    "splash": {
+        "countries": {
+            "h1": "Select your country"
         }
     }
 }

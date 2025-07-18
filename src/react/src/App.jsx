@@ -7,9 +7,14 @@ import Header from "./components/Header/Header_{{LANGUAGE_CODE}}.jsx";
 import About from "./steps/About_{{LANGUAGE_CODE}}.jsx";
 import Step1 from "./steps/Step1_{{LANGUAGE_CODE}}.jsx";
 import Step2 from "./steps/Step2_{{LANGUAGE_CODE}}.jsx";
+import CountrySelect from "./steps/CountrySelect_{{LANGUAGE_CODE}}.jsx";
+
+
 function App() {
   const [currentSection, setCurrentSection] = useState("step2")
-  let currentStep = "step1"
+  const [currentStep, setCurrentStep] = useState("step2")
+  const [formData, setFormData] = useState({ country: ''})
+  
 
 
   //
@@ -18,14 +23,23 @@ function App() {
   const changeSection = (section, e) => {
 
     if (section.startsWith("step")) {
-      currentStep = section
+      setCurrentStep(section);
     }
     if (section == "closeSection") {
-      section == currentStep
+      section  = currentStep;
     }
-
     setCurrentSection(section);
   }
+
+  //
+  // update form data
+  //
+  const updateFormdata = (field, value, e) => {
+    let x = formData;
+    x[field] =value
+    setFormData(x)
+  }
+
 
   return (
     <>
@@ -53,14 +67,30 @@ function App() {
           />
         }
 
+        {/* Select Country */}
+        {currentSection == "selectCountry" &&
+          <CountrySelect
+            emitChangeSection={changeSection}
+            emitUpdateFormdata={updateFormdata}
+           
+          />
+        }
         {/* About section */}
         {currentSection == "about" &&
           <About
             emitChangeSection={changeSection}
           />
         }
-
       </div>
+
+
+
+      
+    {/* ==============   Debug data ================ */}
+     <div style={{ "clear": "both"}}> </div>
+      <pre>
+        section: {currentSection} current step: {currentStep} FormData:  Country: {formData.country}
+      </pre>
     </>
   )
 }
