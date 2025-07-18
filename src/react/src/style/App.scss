@@ -34,11 +34,13 @@ header {
 }
 
 
-
+/*
+* Mobile
+*/
 @media only screen and (max-width: 1000px) {
   body {
     background-color: $lightGrey;
-    background-image: none;
+   /* background-image: none; */
   }
 
   #root {
@@ -47,7 +49,7 @@ header {
 
   header {
     background-size: 70%;
-    background-position: 50% 2.9em;
+    background-position: 50% 3em;
     height: 8em;
   }
 }
