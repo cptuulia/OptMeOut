@@ -58,6 +58,13 @@ class Translate:
   def __formatHtml(self, html):
     # ‘opt-out’ must be red
     html = html.replace("‘opt-out’",'<span style={{color: "red"}}>' + "'" + 'opt-out' + "'" + '</span>' )
+
+    # Text beteen _RED: and  :RED_ to red
+    # 
+    # _RED:Tell  me more:RED_  => <span style={{color: "red"}}>Tell  me more</span>
+    #
+    html = html.replace("_RED:",'<span style={{color: "red"}}>' )
+    html = html.replace(":RED_", '</span>' )
     return html
 
   #
