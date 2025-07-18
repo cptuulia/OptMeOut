@@ -115,7 +115,7 @@ function Step1(props) {
                         }
 
                         {/* Tell me more  and Opt Me Out buttons */}
-                        <div className='buttons'>
+                        <div className='buttonsRow'>
                                 {!tellMeMore &&
                                         <div className="tellMeMoreButton" onClick={tellMore}>
                                                 [[button.tellmemore]]
