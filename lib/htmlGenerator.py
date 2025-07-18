@@ -67,10 +67,10 @@ class HtmlGenerator:
             for lang, overrides in self.languages.items():
                 html = translateObj.translate(template, templateName, overrides)
                 # update language codes
-                html = html.replace('{{LANGUAGE_CODE}}', lang)
+                html = html.replace('[[LANGUAGE_CODE]]', lang)
                 # update language select options
                 languageHtmlOptions = self.languageCodes.get_language_options_html(lang,self.languages)
-                html = html.replace('{{LANGUAGE_HTML_OPTIONS}}', languageHtmlOptions)
+                html = html.replace('[[LANGUAGE_HTML_OPTIONS]]', languageHtmlOptions)
                 # update countries list
                 html = html.replace('[[COUNTRIES_LIST]]', self.languageCodes.get_country_list())
 

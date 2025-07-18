@@ -14,7 +14,7 @@ function LanguageSelect() {
         return (
                 <>
                         <select  onChange={handleChange}>
-                        {{LANGUAGE_HTML_OPTIONS}}
+                        [[LANGUAGE_HTML_OPTIONS]]
                         </select>
                 </>
 

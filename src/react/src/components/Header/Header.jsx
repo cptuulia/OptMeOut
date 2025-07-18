@@ -6,8 +6,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import '/src/components/Header/Header_{{LANGUAGE_CODE}}.scss'
-import LanguageSelect from "/src/components/LanguageSelect/LanguageSelect_{{LANGUAGE_CODE}}.jsx";
+import '/src/components/Header/Header_[[LANGUAGE_CODE]].scss'
+import LanguageSelect from "/src/components/LanguageSelect/LanguageSelect_[[LANGUAGE_CODE]].jsx";
 
 function Header(props) {
         return (

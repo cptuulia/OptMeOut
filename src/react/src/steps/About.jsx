@@ -6,8 +6,8 @@
 import PropTypes from 'prop-types';
 
 
-import './steps_{{LANGUAGE_CODE}}.scss'
-import './About_{{LANGUAGE_CODE}}.scss'
+import './steps_[[LANGUAGE_CODE]].scss'
+import './About_[[LANGUAGE_CODE]].scss'
 
 
 function About(props) {

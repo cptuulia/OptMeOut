@@ -1,4 +1,4 @@
-@import '/src/style/theme_{{LANGUAGE_CODE}}.scss';
+@import '/src/style/theme_[[LANGUAGE_CODE]].scss';
 
 /*************************************************************************
  *
@@ -28,7 +28,7 @@
 #step1 .tellMeMoreButton {
     float: left;
     width: fit-content;
-    background-image: url("/src/assets/img/arrowDown_{{LANGUAGE_CODE}}.png");
+    background-image: url("/src/assets/img/arrowDown_[[LANGUAGE_CODE]].png");
     background-repeat: no-repeat;
     background-size: 10px;
     background-position: right 10px;
@@ -44,7 +44,7 @@
 
 #step1 .readMore .moreButton,
 #step1 .readMore .lessButton {
-    background-image: url("/src/assets/img/arrowDown_{{LANGUAGE_CODE}}.png");
+    background-image: url("/src/assets/img/arrowDown_[[LANGUAGE_CODE]].png");
     background-repeat: no-repeat;
     background-size: 10px;
     background-position: right 5px;
@@ -57,7 +57,7 @@
 }
 
 #step1 .readMore .lessButton {
-    background-image: url("/src/assets/img/arrowUp_{{LANGUAGE_CODE}}.png");
+    background-image: url("/src/assets/img/arrowUp_[[LANGUAGE_CODE]].png");
 }
 
 #step1 .readMore p {

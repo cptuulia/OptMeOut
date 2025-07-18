@@ -8,8 +8,8 @@
 import PropTypes from 'prop-types';
 
 
-import './steps_{{LANGUAGE_CODE}}.scss'
-import './Step2_{{LANGUAGE_CODE}}.scss'
+import './steps_[[LANGUAGE_CODE]].scss'
+import './Step2_[[LANGUAGE_CODE]].scss'
 
 
 function Step2(props) {
