@@ -44,8 +44,12 @@ function CountrySelect(props) {
     ];
 
 
+    //
+    // Change country
+    //
     const changeCountry = (country, e) => {
         props.emitUpdateFormdata("country", country);
+        props.emitChangeSection("closeSection");
     };
 
     return (

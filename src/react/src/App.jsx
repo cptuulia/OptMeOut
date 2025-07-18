@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useState } from 'react'
 
 
 import './style/App_{{LANGUAGE_CODE}}.scss'
@@ -15,7 +15,6 @@ function App() {
   const [currentStep, setCurrentStep] = useState("step2")
   const [formData, setFormData] = useState({ country: ''})
   
-
 
   //
   // Change visible section
