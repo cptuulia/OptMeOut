@@ -19,7 +19,8 @@ class HtmlGenerator:
     # 
     def __init__(self):
         self.languages = self.__get_configured_languages()
-
+        self.languageCodes = LanguageCodes(self.languages)
+       
     # Generate HTML files
     def generate(self):
       
@@ -59,7 +60,6 @@ class HtmlGenerator:
     #  
     def __generateLanguageTemplates(self, srcFile):
         translateObj = Translate()
-        languageCodes = LanguageCodes()
         try:                                        
             with open( Path(srcFile), "r") as f:
                 template = f.read()
@@ -69,7 +69,7 @@ class HtmlGenerator:
                 # update language codes
                 html = html.replace('{{LANGUAGE_CODE}}', lang)
                 # update language select options
-                languageHtmlOptions = languageCodes.get_language_options_html(lang,self.languages)
+                languageHtmlOptions = self.languageCodes.get_language_options_html(lang,self.languages)
                 html = html.replace('{{LANGUAGE_HTML_OPTIONS}}', languageHtmlOptions)
                 # write file
                 targetFile  = self.__get_distFile(srcFile, lang)

@@ -1,6 +1,7 @@
 {
     "menu": {
-        "about": "NL about"
+        "about": "NL about",
+        "locale": "NL"
     },
     "button": {
         "tellmemore": "NL Tell me more",

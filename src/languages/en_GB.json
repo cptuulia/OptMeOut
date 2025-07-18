@@ -1,6 +1,7 @@
 {
     "menu": {
-        "about": "about"
+        "about": "about",
+        "locale": "EN"
     },
     "button": {
         "tellmemore": "Tell me more",
