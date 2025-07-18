@@ -3,6 +3,10 @@
         "about": "NL about",
         "locale": "NL"
     },
+     "about": {
+        "h1": "NL About",
+        "p": "NL Haretra a placerat nibh facilisis. Phasellus gravida libero vitae nisi aliquam pharetra. Quisque dignissim justo sit amet odio consequat laoreet. Morbi blandit, nisi sit amet egestas ullamcorper, enim leo placerat sapien, eu egestas enim neque at mauris. Nulla facilisi. In non ligula. Nulla facilisi ligu."
+    },
     "button": {
         "tellmemore": "NL Tell me more",
         "OptMeOut": "NL OptMeOut",

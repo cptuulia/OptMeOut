@@ -4,8 +4,8 @@
  * 
  */
 import PropTypes from 'prop-types';
-
 import { useState } from 'react';
+
 import './steps_{{LANGUAGE_CODE}}.scss'
 import './step1_{{LANGUAGE_CODE}}.scss'
 
@@ -122,7 +122,7 @@ function Step1(props) {
                                         </div>
                                 }
                                 <div className="buttonActive"
-                                        onClick={(e) => props.emitChangeStep(2, e)}
+                                        onClick={(e) => props.emitChangeSection("step2", e)}
                                 >
                                         [[button.OptMeOut]]
                                 </div>
@@ -143,6 +143,6 @@ function Step1(props) {
 
 
 Step1.propTypes = {
-        emitChangeStep: PropTypes.func,  // Change step
+        emitChangeSection: PropTypes.func,  // Change step
 };
 export default Step1

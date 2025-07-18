@@ -3,32 +3,50 @@ import { useState } from 'react'
 
 import './style/App_{{LANGUAGE_CODE}}.scss'
 import Header from "./components/Header/Header_{{LANGUAGE_CODE}}.jsx";
+
+import Step1 from "./steps/About_{{LANGUAGE_CODE}}.jsx";
 import Step1 from "./steps/Step1_{{LANGUAGE_CODE}}.jsx";
 function App() {
-  const [currentStep, setCurrentStep] = useState(1)
+  const [currentSection, setCurrentSection] = useState("step1")
+  let currentStep = "step1"
+  
 
   //
-  // Change Step
+  // Change visible section
   //
-  const changeStep = (stepNUmber, e) => {
-    setCurrentStep(stepNUmber);
+  const changeSection = (section, e) => {
+
+    if (section.startsWith("step")) {
+      currentStep = section
+    }
+    
+    setCurrentSection(section);
   };
-
 
   return (
     <>
 
-      <header> <Header /></header>
+      <header>
+        <Header
+          emitChangeSection={changeSection}
+        />
+      </header>
 
 
       <div id="mainContent">
-        {currentStep == 1 &&
+        {currentSection == "step1" &&
           <Step1
-            emitChangeStep={changeStep}
+            emitChangeSection={changeSection}
           />}
 
-        {currentStep == 2 &&
+        {currentSection == "step2" &&
           <div>Step2</div>
+        }
+
+         {currentSection == "about" &&
+          <About
+            emitChangeSection={changeSection}
+          />}
         }
       </div>
     </>
