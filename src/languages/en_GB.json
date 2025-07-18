@@ -47,7 +47,37 @@
     },
     "splash": {
         "countries": {
-            "h1": "Select your country"
+            "h1": "Select your country",
+            "list": {
+                "1": "Austria",
+                "2": "Belgium (NL)",
+                "3": "Belgium (FR)",
+                "4": "Bulgaria",
+                "5": "Croatia",
+                "6": "Cyprus",
+                "7": "Czechia",
+                "8": "Denmark",
+                "9": "Estonia",
+                "10": "Finland",
+                "11": "France",
+                "12": "Germany",
+                "13": "Greece",
+                "14": "Hungary",
+                "15": "Ireland",
+                "16": "Italy",
+                "17": "Latvia",
+                "18": "Lithuania",
+                "19": "Luxembourg",
+                "20": "Maltha",
+                "21": "Netherlands",
+                "22": "Poland",
+                "23": "Portugal",
+                "24": "Romania",
+                "25": "Slovakia",
+                "26": "Slovenia",
+                "27": "Spain",
+                "28": "Sweden"
+            }
         }
     }
 }

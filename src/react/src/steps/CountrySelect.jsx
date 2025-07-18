@@ -12,37 +12,7 @@ import './CountrySelect_{{LANGUAGE_CODE}}.scss'
 
 function CountrySelect(props) {
 
-    let countries = [
-        "Austria",
-        "Belgium (NL)",
-        "Belgium (FR)",
-        "Bulgaria",
-        "Croatia",
-        "Cyprus",
-        "Czechia",
-        "Denmark",
-        "Estonia",
-        "Finland",
-        "France",
-        "Germany",
-        "Greece",
-        "Hungary",
-        "Ireland",
-        "Italy",
-        "Latvia",
-        "Lithuania",
-        "Luxembourg",
-        "Maltha",
-        "Netherlands",
-        "Poland",
-        "Portugal",
-        "Romania",
-        "Slovakia",
-        "Slovenia",
-        "Spain",
-        "Sweden"
-    ];
-
+    let countries = [ [[COUNTRIES_LIST]] ];
 
     //
     // Change country
@@ -54,6 +24,7 @@ function CountrySelect(props) {
 
     return (
         <div className="step" id="countrySelect">
+            
             <h1>[[splash.countries.h1]]</h1> 
             <div
                 className='closeButton'

@@ -71,6 +71,9 @@ class HtmlGenerator:
                 # update language select options
                 languageHtmlOptions = self.languageCodes.get_language_options_html(lang,self.languages)
                 html = html.replace('{{LANGUAGE_HTML_OPTIONS}}', languageHtmlOptions)
+                # update countries list
+                html = html.replace('[[COUNTRIES_LIST]]', self.languageCodes.get_country_list())
+
                 # write file
                 targetFile  = self.__get_distFile(srcFile, lang)
                 with open(targetFile, "w") as f:
