@@ -7,7 +7,8 @@
 * [Install Python build](#install-section)
 * [Importing new languages](#import-mew-section)
 * [Modifying translations](#modify-section)
-* [Adding translations to existing languages](#add-sectionn)
+* [Adding translations to existing languages](#add-section)
+* [Translation special tags](#special-tags-section)
 * [Folders](#folders-section)
 * [React Js](#react-section)
   * [Files to modify](#react-section)
@@ -216,6 +217,23 @@ step1.title;Name and Address;NAW gegevens
 
 5) After the modifications, build again and
    the translations are updated.
+
+
+
+<a name='special-tags-section'></a>
+
+## Translation special tags
+
+Below some special tags to modify the format of the texts
+
+### Red
+All of the texts which are surrounded by the tags ```<red></red>``` will be rendedered in red.
+
+Example:
+```<red> This will be red </red>```
+
+Also all of the strings ``` 'opt-me' ``` are rendered in red. 
+
 
 <a name='folders-section'></a>
 
