@@ -137,10 +137,7 @@ class HtmlGenerator:
     # if it does not exist
     #
     def __makeDistFolder(self,srcPath):
-        pprint('xxxxxxxxxx')
-        pprint(srcPath)
         srcPath = srcPath.replace(config.SRC_TEMPLATE_PATH + '/' ,'')
         for lang, overrides in self.languages.items():
             distPath =  config.DIST_DIR + '/'+ lang + '/' +  srcPath
-            pprint(distPath)
             Path(distPath).mkdir(exist_ok=True)

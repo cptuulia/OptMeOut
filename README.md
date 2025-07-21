@@ -1,6 +1,32 @@
 # OptMeOut
 
-## Install
+## Contents
+
+* [Introduction](#intro-section)
+* [Install Python build](#python-section)
+* [Install Python build](#install-section)
+* [Importing new languages](#import-mew-section)
+* [Modifying translations](#modify-section)
+* [Adding translations to existing languages](#add-sectionn)
+* [Folders](#folders-section)
+* [React Js](#react-section)
+  * [Files to modify](#react-section)
+  * [Update React JS code](#react-update-section)
+    * [Install](#react-install-section)
+    * [Update code](#react-update-section)
+      <a name='intro-section'></a>
+
+## Introduction
+
+Here are some instruction how to make translated templates and
+modofy the HTML and CSS templates.
+Most of the instructions are step by step instructions, which can be done without a deep understanding.
+
+<a name='python-section'></a>
+
+## Install Python build
+
+In this section you enble the command ```build.py``` to make the translated templates.
 
 1) Clone this repo.
 2) Make sure that you have Python installed in your computer.
@@ -15,15 +41,39 @@ dist/
 dist/js
 ```
 
-In Nix systems you do this
+In Mac and Linux  systems you do this by:
 
 ```
-sudo chmod a+rw src/csv/export/
-sudo chmod a+rw src/csv/import/
-sudo chmod a+rw src/languages/
-sudo chmod a+rw dist/
-sudo chmod a+rw dist/js/
+# On development server we can give file permissions for all files
+sudo chmod -R 0777 *
 ```
+
+Try by
+
+```
+python build.py
+```
+
+You should see
+
+```
+-----------------------
+
+ Mounting Python files from /Users/tuuliaantonius/gitrepos/opt_me_out/OptMeOut
+
+-----------------------
+opt_me_out_template_builder
+Generated dist/en_GB/index.html
+Generated dist/nl_NL/index.html
+Generated dist/en_GB/src/style/theme.scss
+Generated dist/nl_NL/src/style/theme.scss
+Generated dist/en_GB/src/style/App.scss
+Generated dist/nl_NL/src/style/App.scss
+Generated dist/en_GB/src/components/LanguageSelect/LanguageSelect.jsx
+...
+```
+
+<a name='import-mew-section'></a>
 
 ## Importing new languages
 
@@ -48,7 +98,15 @@ to the folder ```src/csv/import``` and rename it after the new language local
 in this case nl_BE.csv
 ```src/csv/export/nl_BE.csv```
 The locale codes you can find in
-```lib/languageCodes.py```
+```https://saimana.com/list-of-country-locale-code/```
+All of locales should have two parts separated by '_'
+As language_country
+Examples:
+
+```
+nl_NL => Ducth, Netherlands, 
+nl_BE => Ducth, Belgium
+```
 
 Open the file and modify the third column, ```Translation (EN_GB)```
 as  ```Translation (NL_BE)``` and translate the third column.
@@ -91,13 +149,17 @@ python build.py
 4) Now we have a template translated in Belgium Dutch
    ```dist/nl_BE.html```
 
+<a name='modify-section'></a>
+
 ## Modifying translations
 
 In this case we do the same as in the case "Importing new languages",
 but instead of creating a new file we copy an existing file to the folder
 ```src/csv/import```, modify it and run the build command again.
 
-## Adding translations
+<a name='add-section'></a>
+
+## Adding translations to existing languages
 
 1) Build all
 
@@ -155,6 +217,8 @@ step1.title;Name and Address;NAW gegevens
 5) After the modifications, build again and
    the translations are updated.
 
+<a name='folders-section'></a>
+
 ## Folders
 
 ### src/languages/
@@ -207,7 +271,7 @@ step1.properties.address.title;Address;Adres
 
 ### src/csv/import/
 
-In this folder we have the cvs files to be imported to the
+In this folder we have the cvs files to be imported by the ```build.py``` command to the
 json files in the folder ```src/languages/```
 The file CSV file structure is the same.
 
@@ -218,7 +282,17 @@ See how to do this in the section 'React Js'
 
 ### dist
 
-The generated html templates are in this folder
+The generated html templates are in this folder.
+Each language has its own sub folder and index file like
+
+```
+dist/en_GB
+    index.html
+ dist/nl_NL
+    index.html   
+```
+
+See more about the file structure in the section "Update React JS code"
 
 ### dist/js
 
@@ -232,36 +306,173 @@ let  globalTranslationsObj = JSON.parse(translationsJson);
 function _trns(translation){return(globalTranslationsObj[translation]);}
 ```
 
-
+<a name='react-section'></a>
 
 ## React Js
 
+Below are some notes how to modify the HTML and CSS files with React JS.
 The react js  source code can be found in the folder ```src/react```
 You edit and modify this folder.
+The best way to edit these files is to open you editor direcctly on this folder.
 
-### Intialize and update node_modules
-For the first time and updated in the ```node_modules``` you need to run
-the ```npm install``` command to install or update.
-You do in in the following workflow
-1) If needed do updated in the  ```src/react``` for the modules
-2) Run the command ```./dockerRunBuildTemplates.sh```
-in the root folder ( ```opt_me_out```)
-3) Run the build ```npm install``` command in the folder dist
-  ```
-    cd OptMeOut/dist/
-    npm install
-  ```
+<a name='react-modify-section'></a>
 
-  You can also use the script ```scripts/installNpmModules.sh```
+### Files to modify
+
+Most important files and folders to modify HTML and CSS.
+
+#### Main file
+
+src/react/src/App.jsx
+src/react/src/style/App.scss
+
+This file is the main file and controls the current open step or open section.
+
+The HTML code starts in the section starting by
+
+```
+return (
+ <>
+
+   <header>
+     <Header
+       emitChangeSection={changeSection}
+     />
+   </header>
 
 
-  4) Start the server
+   <div id="mainContent">
+```
 
-  ```
-    npm run dev
-  ```
+Only this part should be modified for HTML and CSS changes.
 
-  or use  ```scripts/startServer.sh```
-    And open
+#### Steps
 
-    ```http://localhost:5173/index_en_GB.html ```
+All of the steps and sections can be found in in the folder
+```src/react/src/steps```
+
+Each step has its own .jsx file (code for HTML) ans the .scss file(code for CSS).
+There is also a common style sheet ```src/react/src/steps/steps.scss```
+Which is shared by all /jsx files in the folder.
+
+Each .jsx file has the HTML code in the section starting by
+
+```
+return (
+ <>
+```
+
+Only this part should be edited.
+
+Example Step1 files.
+HTML file
+```src/react/src/steps/Step1.jsx```
+start edition form the block
+
+```
+return (
+        <div className="step" id="step1">
+
+```
+
+Css for step1
+```src/react/src/steps/Step1.scss```
+
+Common Css
+```src/react/src/steps/steps.scss```
+
+<a name='react-update-section'></a>
+
+## Update React JS code
+
+In this section you get to know how to update this site on your local server.
+
+<a name='react-install-section'></a>
+
+### Install
+
+Before updatings you need to enable this code on your local host.
+
+#### Install npm
+
+First you  need to install npm on you computer.
+See more info for this on
+https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+This application has been build with the verion ```10.5.0```
+If you have problems, pleasr check the version.
+
+#### Install server
+
+Make sure you have the correct branch.
+Follow the steps below. Some commands aren give for Mac and Linux
+systems.
+
+1. Run the command ```build.py```
+   dist/nl_NL/src/components/LanguageSelect/LanguageSelect.jsx
+
+```
+2. Each language has now its own sub folder in the folder ```dist```
+
+3. In this example we use the sub folder ```en_GB``` as example, all of the folders work
+in the same way. Note: on the local server you cannot use the language switch.
+Basically you just need to follow the instructions.
+
+4. Move to the folder dist and make sure, that all of files have read and write permissions
+```  cd dist
+     sudo chmod -R 0777 * ; # Mac and Linux only
+```
+
+6. Move to the folder ```en_GB``` and install node modules
+
+```cd
+     # Delete current modules, if exists
+     rm -rf node_modules  ; # Mac and Linux only
+     # install
+     npm install
+
+     # You should see something like:
+     #
+     # npm WARN EBADENGINE Unsupported engine {
+     # npm WARN EBADENGINE   package: 'vite@7.0.4',
+     # npm WARN EBADENGINE   required: { node: '^20.19.0 || >=22.12.0' },
+     # npm WARN EBADENGINE   current: { node: 'v21.7.2', npm: '10.5.0' }
+     # npm WARN EBADENGINE }
+     #
+     # added 169 packages, and audited 170 packages in 6s
+     #
+     # 34 packages are looking for funding
+     #  run `npm fund` for details
+     #
+     # found 0 vulnerabilities
+```
+
+7. Now you can start the server
+
+   ```
+     npm run dev
+
+     # Dont worry about the warnings:
+     #
+     # Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+     #
+     # More info and automated migrator: https://sass-lang.com/d/import
+     #
+     #  ╷
+     #1 │ @import '/src/style/theme.scss';
+     #  │         ^^^^^^^^^^^^^^^^^^^^^^^
+   ```
+8. Now you can see the code:
+
+http://localhost:5173/
+
+<a name='react-update-section'></a>
+
+### Update code
+
+After each time you update you need to run the command:
+```build.py```
+
+The chages are automstically updated to the URL
+http://localhost:5173/
+
+Sometimes you need to refresh the page.
