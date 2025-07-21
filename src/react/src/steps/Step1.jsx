@@ -6,10 +6,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import './steps_[[LANGUAGE_CODE]].scss'
-import './step1_[[LANGUAGE_CODE]].scss'
+import './steps.scss'
+import './step1.scss'
 
-import yes from '/src/assets/img/yes_[[LANGUAGE_CODE]].png';
+import yes from '/src/assets/img/yes.png';
 function Step1(props) {
 
         //

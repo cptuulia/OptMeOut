@@ -1,13 +1,13 @@
 import {useState } from 'react'
 
 
-import './style/App_[[LANGUAGE_CODE]].scss'
-import Header from "./components/Header/Header_[[LANGUAGE_CODE]].jsx";
+import './style/App.scss'
+import Header from "./components/Header/Header.jsx";
 
-import About from "./steps/About_[[LANGUAGE_CODE]].jsx";
-import Step1 from "./steps/Step1_[[LANGUAGE_CODE]].jsx";
-import Step2 from "./steps/Step2_[[LANGUAGE_CODE]].jsx";
-import CountrySelect from "./steps/CountrySelect_[[LANGUAGE_CODE]].jsx";
+import About from "./steps/About.jsx";
+import Step1 from "./steps/Step1.jsx";
+import Step2 from "./steps/Step2.jsx";
+import CountrySelect from "./steps/CountrySelect.jsx";
 
 
 function App() {
