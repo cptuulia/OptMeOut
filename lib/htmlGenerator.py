@@ -28,7 +28,7 @@ class HtmlGenerator:
       path = config.SRC_TEMPLATE_PATH + '/src'
       self.__crawl(path)
       self.__copy_react_root_files()
-      self.__set_default_index()
+      #self.__set_default_index()
       return    
 
     #
@@ -52,8 +52,11 @@ class HtmlGenerator:
         
         for rootFile in Path(config.SRC_TEMPLATE_PATH).glob("*.*"):
             source =  str(rootFile)
-            target = config.DIST_DIR  + source.replace(config.SRC_TEMPLATE_PATH ,'')
-            shutil.copy(source, target)
+            #target = config.DIST_DIR  + source.replace(config.SRC_TEMPLATE_PATH ,'')
+            #shutil.copy(source, target)
+            for lang, overrides in self.languages.items():
+                target = config.DIST_DIR + '/' + lang + '/' + source.replace(config.SRC_TEMPLATE_PATH ,'')
+                shutil.copy(source, target)
 
     #
     # Generate the language templates for the given language
@@ -90,7 +93,7 @@ class HtmlGenerator:
     # Get the target path for the given source file
     #
     def __get_distFile(self, srcFile, lang):
-        distFile = self.__distFileName(srcFile, lang)
+        distFile = self.__targetFileName(srcFile, lang)
         targetFile = Path(config.DIST_DIR) / f"{distFile}"
         return targetFile
 
@@ -106,13 +109,18 @@ class HtmlGenerator:
     #
     # Get file name for the given template and language
     #
-    def __distFileName(self, srcFile, lang) :
-        srcFile = srcFile.replace(config.SRC_TEMPLATE_PATH + '/' ,'')
-        parts = srcFile.split('.')
-        file = parts[0]
-        extension =  parts[1]
-        return file +'_' + lang + '.' + extension
+    #def __distFileName(self, srcFile, lang) :
+    #    srcFile = srcFile.replace(config.SRC_TEMPLATE_PATH + '/' ,'')
+    #    parts = srcFile.split('.')
+    #    file = parts[0]
+    #    extension =  parts[1]
+    #    return file +'_' + lang + '.' + extension
 
+    def __targetFileName(self, srcFile, lang) :
+        srcFile = srcFile.replace(config.SRC_TEMPLATE_PATH + '/' ,'')
+        langFolder =  config.DIST_DIR +'/' +  lang
+        Path(langFolder).mkdir(exist_ok=True)
+        return lang + '/' + srcFile
     #
     # Crawl all of the files and folder in the give folder and make translations
     #
@@ -130,5 +138,6 @@ class HtmlGenerator:
     #
     def __makeDistFolder(self,srcPath):
         srcPath = srcPath.replace(config.SRC_TEMPLATE_PATH + '/' ,'')
-        distPath = config.DIST_DIR + '/' + srcPath
-        Path(distPath).mkdir(exist_ok=True)
+        for lang, overrides in self.languages.items():
+            distPath =  config.DIST_DIR + '/'+ lang + '/' +  srcPath
+            Path(distPath).mkdir(exist_ok=True)

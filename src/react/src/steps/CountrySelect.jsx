@@ -6,8 +6,8 @@
 import PropTypes from 'prop-types';
 
 
-import './steps_[[LANGUAGE_CODE]].scss'
-import './CountrySelect_[[LANGUAGE_CODE]].scss'
+import './steps.scss'
+import './CountrySelect.scss'
 
 
 function CountrySelect(props) {

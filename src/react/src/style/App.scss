@@ -1,11 +1,11 @@
-@import '/src/style/theme_[[LANGUAGE_CODE]].scss';
+@import '/src/style/theme.scss';
 
 body {
   background-color: $lightGrey;
   margin: 0;
   display: flex;
   place-items: center;
-  background-image: url("/src/assets/img/bgr_[[LANGUAGE_CODE]].png");
+  background-image: url("/src/assets/img/bgr.png");
   background-color: $veryLightGreen;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@ body {
 header {
   margin-top: 0px;
   padding: 1em;
-  background-image: url("/src/assets/img/logo_[[LANGUAGE_CODE]].png");
+  background-image: url("/src/assets/img/logo.png");
   background-repeat: no-repeat;
   background-size: 40%;
   background-position-x: center;

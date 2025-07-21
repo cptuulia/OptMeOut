@@ -7,7 +7,7 @@
 
 function LanguageSelect() {
        const handleChange = (e) => {
-                let url = 'index_' + e.target.value +'.html'
+                let url = '/' + e.target.value 
                 window.location.href = url
         };
 
