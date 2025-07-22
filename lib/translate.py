@@ -146,3 +146,12 @@ class Translate:
             row = row +'</' + tag + '>'
             html = html + row
     return html
+
+  #
+  # get language codes as string
+  #
+  def language_codes(self, languages):
+      codes =''
+      for lang, overrides in languages.items():
+        codes = codes + '"' + lang + '",'
+      return codes

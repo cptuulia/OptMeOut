@@ -24,10 +24,11 @@ class HtmlGenerator:
     # Generate HTML files
     def generate(self):
       
+      self.__copy_react_root_files()
       self.__generateLanguageTemplates(config.SRC_TEMPLATE_PATH + '/index.html')
+      self.__generateLanguageTemplates(config.SRC_TEMPLATE_PATH + '/rootIndex.html')
       path = config.SRC_TEMPLATE_PATH + '/src'
       self.__crawl(path)
-      self.__copy_react_root_files()
       #self.__set_default_index()
       return    
 
@@ -69,15 +70,16 @@ class HtmlGenerator:
                 templateName = f.name
             for lang, overrides in self.languages.items():
                 html = translateObj.translate(template, templateName, overrides)
+               
                 # update language codes
                 html = html.replace('[[LANGUAGE_CODE]]', lang)
+                html = html.replace('[[LANGUAGE_CODES]]', translateObj.language_codes(self.languages))
                 # update language select options
                 languageHtmlOptions = self.languageCodes.get_language_options_html(lang,self.languages)
                 html = html.replace('[[LANGUAGE_HTML_OPTIONS]]', languageHtmlOptions)
                 # update countries list
                 html = html.replace('[[COUNTRIES_LIST]]', self.languageCodes.get_country_list())
                 html = html.replace('[[PAGE_ABOUT_PARAGRAPHS]]',  translateObj.page_about_paragraphs())
-                
                 # write file
                 targetFile  = self.__get_distFile(srcFile, lang)
                 with open(targetFile, "w") as f:

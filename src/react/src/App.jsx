@@ -1,4 +1,4 @@
-import {useState } from 'react'
+import { useEffect,useState } from 'react'
 
 
 import './style/App.scss'
@@ -14,8 +14,19 @@ function App() {
   const [currentSection, setCurrentSection] = useState("step1")
   const [currentStep, setCurrentStep] = useState("step1")
   const [formData, setFormData] = useState({ country: ''})
-  
+  const [sectionFromQueryParamsSet, setSectionFromQueryParamsSet] = useState(false)
 
+  useEffect(() => {
+
+    // show required section from query string if exists
+    const queryParams = new URLSearchParams(window.location.search);
+    if (queryParams.has('section') && !sectionFromQueryParamsSet) {
+      let section = queryParams.get('section');
+      changeSection(section)
+      setSectionFromQueryParamsSet(true)
+    }
+
+  });
   //
   // Change visible section
   //
@@ -38,6 +49,8 @@ function App() {
     x[field] =value
     setFormData(x)
   }
+
+
 
 
   return (
