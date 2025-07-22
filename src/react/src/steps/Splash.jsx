@@ -1,6 +1,6 @@
 /**
  * 
- * Step2
+ * Splash
  * 
  * splash
  * 
@@ -9,13 +9,13 @@ import PropTypes from 'prop-types';
 
 
 import './steps.scss'
-import './Step2.scss'
+import './Splash.scss'
 
 
-function Step2(props) {
+function Splash(props) {
 
         return (
-                <div className="step" id="Step2">
+                <div className="step" id="Splash">
                         <h1>[[page.fallback.header]]</h1>
                         <p1>[[page.fallback.intro]]</p1>
                         <div className='clearBoth'></div>
@@ -42,8 +42,8 @@ function Step2(props) {
 }
 
 
-Step2.propTypes = {
+Splash.propTypes = {
         emitChangeSection: PropTypes.func,  // Change step
 };
 
-export default Step2
+export default Splash

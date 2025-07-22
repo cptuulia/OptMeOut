@@ -6,7 +6,7 @@ import Header from "./components/Header/Header.jsx";
 
 import About from "./steps/About.jsx";
 import Step1 from "./steps/Step1.jsx";
-import Step2 from "./steps/Step2.jsx";
+import Splash from "./steps/Splash.jsx";
 import CountrySelect from "./steps/CountrySelect.jsx";
 
 
@@ -65,21 +65,15 @@ function App() {
 
       <div id="mainContent">
 
-        {/* Step 1 Introduction*/}
-        {currentSection == "step1" &&
-          <Step1
+
+        {/* splash  */}
+        {currentSection == "splash" &&
+          <Splash
             emitChangeSection={changeSection}
           />
         }
 
-        {/* Step 2 splash  */}
-        {currentSection == "step2" &&
-          <Step2
-            emitChangeSection={changeSection}
-          />
-        }
-
-        {/* Select Country */}
+          {/* Select Country */}
         {currentSection == "selectCountry" &&
           <CountrySelect
             emitChangeSection={changeSection}
@@ -87,12 +81,29 @@ function App() {
            
           />
         }
+
         {/* About section */}
         {currentSection == "about" &&
           <About
             emitChangeSection={changeSection}
           />
         }
+
+        {/* Step 1 Introduction*/}
+        {currentSection == "step1" &&
+          <Step1
+            emitChangeSection={changeSection}
+          />
+        }
+
+        {/* Step 1 Introduction*/}
+        {currentSection == "step2" &&
+          <div>
+            Step 2 will be here
+        </div>
+        }
+
+      
       </div>
 
 
@@ -101,7 +112,7 @@ function App() {
     {/* ==============   Debug data ================ */}
      <div style={{ "clear": "both"}}> </div>
       <pre>
-        section: {currentSection} current step: {currentStep} FormData:  Country: {formData.country}
+        currentSection: {currentSection} current step: {currentStep} FormData:  Country: {formData.country}
       </pre>
     </>
   )

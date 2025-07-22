@@ -25,7 +25,7 @@
 		let locale = navigator.language;
 		locale = locale.replace("-", "_")
 		if (!locales.includes(locale)) {
-			locale = 'en_GB?selectCountry=true'
+			locale = 'en_GB?section=splash'
 		}
 		window.location.href = locale;
 	} else {
