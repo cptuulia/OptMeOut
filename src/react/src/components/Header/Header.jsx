@@ -7,13 +7,13 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import '/src/components/Header/Header.scss'
-import LanguageSelect from "/src/components/LanguageSelect/LanguageSelect.jsx";
+
 
 function Header(props) {
         return (
                 <>
                         <div id="headerLanguageSelect" >
-                                <LanguageSelect />
+                               [[menu.locale]]
                         </div>
                         <div
                                 id="headerAbout"
