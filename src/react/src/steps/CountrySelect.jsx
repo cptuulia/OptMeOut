@@ -12,20 +12,21 @@ import './CountrySelect.scss'
 
 function CountrySelect(props) {
 
-    let countries = [ [[COUNTRIES_LIST]] ];
+    let countries = [[COUNTRIES_LIST]];
 
     //
     // Change country
     //
     const changeCountry = (country, e) => {
-        props.emitUpdateFormdata("country", country);
-        props.emitChangeSection("closeSection");
+        let url = '/' + country
+        window.location.href = url
     };
+
 
     return (
         <div className="step" id="countrySelect">
-            
-            <h1>[[splash.countries.h1]]</h1> 
+
+            <h1>[[splash.countries.h1]]</h1>
             <div
                 className='closeButton'
                 onClick={(e) => props.emitChangeSection("closeSection", e)}
@@ -36,45 +37,41 @@ function CountrySelect(props) {
             {/* left column*/}
             <div className="navigation">
                 <ul className='leftColumn'>
-                    {
-                        countries.map((country, index) => {
-                            if (index <= countries.length / 2) {
-                                return (
-                                    <li
-                                        className="intro"
-                                        key={"country" + index}
-                                        onClick={(e) => changeCountry(country)}
-                                    >
-                                        {country}
-                                    </li>)
-                            } else {
-                                return (<></>)
-                            }
+                    {Object.keys(countries).map((innerAttr, index) => {
+                        if (index <= Object.keys(countries).length / 2) {
 
-                        })
+                            return (
+                                <li className="intro"
+                                    key={"country" + index}
+                                    onClick={(e) => changeCountry(innerAttr)}
+                                >
+                                    {countries[innerAttr]}
+                                </li>
+                            )
+                        }
+                    })
                     }
                 </ul>
+            </div>
 
-                {/* right column*/}
+            {/* right column*/}
+            <div className="navigation">
                 <ul className='rightColumn'>
-                    {
-                        countries.map((country, index) => {
-                            if (index >= countries.length / 2) {
-                                return (
-                                    <li
-                                        className="intro"
-                                        key={"country" + index}
-                                        onClick={(e) => changeCountry(country)}
-                                    >
-                                        {country}
-                                    </li>)
-                            } else {
-                                return (<></>)
-                            }
-                        })
+                    {Object.keys(countries).map((innerAttr, index) => {
+                        if (index > Object.keys(countries).length / 2) {
+
+                            return (
+                                <li className="intro"
+                                    key={"country" + index}
+                                    onClick={(e) => changeCountry(innerAttr)}
+                                >
+                                    {countries[innerAttr]}
+                                </li>
+                            )
+                        }
+                    })
                     }
                 </ul>
-
             </div>
         </div>
 
@@ -84,6 +81,6 @@ function CountrySelect(props) {
 
 CountrySelect.propTypes = {
     emitChangeSection: PropTypes.func,
-    emitUpdateFormdata: PropTypes.func, 
+    emitUpdateFormdata: PropTypes.func,
 };
 export default CountrySelect

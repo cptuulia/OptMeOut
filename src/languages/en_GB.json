@@ -1,7 +1,8 @@
 {
     "menu": {
         "about": "about",
-        "locale": "EN"
+        "locale": "EN",
+        "country": "Ireland"
     },
     "button": {
         "tellmemore": "Tell me more",

@@ -9,6 +9,7 @@
   * [Importing new languages](#import-mew-section)
   * [Modifying translations](#modify-section)
   * [Adding translations to existing languages](#add-section)
+  * [Country and location codes](#country-and-location-codes-section)
   * [Translation special tags](#special-tags-section)
   * [About page paragraphs](#about-page-section)
 * [Folders](#folders-section)
@@ -130,24 +131,24 @@ the desired language.
 
 ```
 Key,English,Translation (NL_BE)
-pageTitle;Compose Your Letter;Compose Your Letter
-previous;Previous;Previous
-next;Next;Next
-pageTitle;Compose Your Letter;NL Compose Your Letter
-previous;Previous;NL Previous
-next;Next;NL Next
-step1.title;Name and Address;NAW gegevens
-step1.properties.name.title;Full Name;Voll1111edige naam
-step1.properties.address.title;Address;Adres
-step2.title;Optout Out;Optout Out
-step2.properties.primaryUse.title;Primary use;Primary use
-step2.properties.secondaryUse.title;Secondary use;Secondary use
-step3.title;GP Name;Kies je huisarts
-step3.properties.gpName.title;Search GP Name;Huisarts naam
-step4.title;Choose amount to pay;Hoeveel wil je betalen?
-step4.properties.amount.title;Amount (£);
-step5.title;Subscribe to Newsletter;Inschrijven voor de nieuwsbrief?
-step5.properties.subscribe.title;Subscribe?;Subscribe?
+menu.about;about;about
+menu.locale;EN;EN
+menu.country;Ireland;Ireland
+button.tellmemore;Tell me more;Tell me more
+button.OptMeOut;OptMeOut;OptMeOut
+button.readmore.less;less;less
+button.readmore.more;more;more
+page.fallback.header;This website provides EU `opt--out’ from the EHDS
+page.fallback.intro;Ourpean Health Data Space (EHDS). Please in by clicking <red>"Select Country"</red> 
+page.about.title;About;About
+page.about.paragraph1.h;I am am h1;I am am h1
+page.about.paragraph1.p1;h1 p1 text;h1 p1 text
+page.about.paragraph1.p2;h1 p2 text ;h1 p2 text 
+page.about.paragraph2.h;I am a h2;I am a h2
+page.about.paragraph2.p1;h2 p1  text;h2 p1  text
+page.about.paragraph2.p2;h2 p2  text;h2 p2  text
+page.about.paragraph2.p3;h2 p3  text;h2 p3  text
+page.about.paragraph3.h;I am a h3;I am a h3
 ```
 
 3) Run the build command again
@@ -187,9 +188,10 @@ python build.py
 ```
 Key,English,Translation (EN_GB)
 newTranslation;new translation;new translation
-pageTitle;Compose Your Letter;Compose Your Letter
-previous;Previous;Previous
-next;Next;Next
+menu.about;about;about
+menu.locale;EN;EN
+menu.country;Ireland;Ireland
+button.tellmemore;Tell me more;Tell me more
 ```
 
 3) Build again
@@ -205,10 +207,11 @@ python build.py
 ```
 Key,English,Translation (NL_NL)
 newTranslation;new translation;
-pageTitle;Compose Your Letter;NL Compose Your Letter
-previous;Previous;NL Previous
-next;Next;NL Next
-step1.title;Name and Address;NAW gegevens
+menu.about;about;NL about
+menu.locale;NL;NL
+menu.country;Netherlands;Netherlands
+button.tellmemore;NL Tell me more;Tell me more
+
 ```
 
 Copy all of the files to the folder
@@ -219,11 +222,11 @@ Example nl_NL.csv
 
 ```
 Key,English,Translation (NL_NL)
-newTranslation;new translation;nieuwe vertaling
-pageTitle;Compose Your Letter;NL Compose Your Letter
-previous;Previous;NL Previous
-next;Next;NL Next
-step1.title;Name and Address;NAW gegevens
+newTranslation;new translation; NL new translation
+menu.about;about;NL about
+menu.locale;NL;NL
+menu.country;Netherlands;Netherlands
+button.tellmemore;NL Tell me more;Tell me mores
 ```
 
 5) After the modifications, build again and

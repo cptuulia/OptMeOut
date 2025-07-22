@@ -49,11 +49,13 @@ class LanguageCodes:
     # Get all countries from en_GB
     #
     def __set_country_list(self,languages):
-        
-        countries = languages['en_GB']['splash']['countries']['list'];
-        countriesList = ""
-        for index, country in countries.items():
-            countriesList = countriesList + '"' + country + '",'
-        return countriesList
+        countriesList = {}
+        for lang, overrides in languages.items():
+            pprint(lang)
+            pprint(overrides['menu']['country'])
+            countriesList[lang] = overrides['menu']['country']
+        countriesStr=   json.dumps(countriesList, sort_keys=True)    
+        return countriesStr
+
         
 

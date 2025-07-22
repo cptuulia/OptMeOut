@@ -1,7 +1,8 @@
 {
     "menu": {
         "about": "NL about",
-        "locale": "NL"
+        "locale": "NL",
+        "country": "Netherlands"
     },
     "page": {
         "fallback": {
