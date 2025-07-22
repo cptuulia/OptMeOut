@@ -4,11 +4,13 @@
 
 * [Introduction](#intro-section)
 * [Install Python build](#python-section)
-* [Install Python build](#install-section)
-* [Importing new languages](#import-mew-section)
-* [Modifying translations](#modify-section)
-* [Adding translations to existing languages](#add-section)
-* [Translation special tags](#special-tags-section)
+
+* [Manage translated templates](#translations-section)
+  * [Importing new languages](#import-mew-section)
+  * [Modifying translations](#modify-section)
+  * [Adding translations to existing languages](#add-section)
+  * [Translation special tags](#special-tags-section)
+  * [About page paragraphs](#about-page-section)
 * [Folders](#folders-section)
 * [React Js](#react-section)
   * [Files to modify](#react-section)
@@ -74,9 +76,16 @@ Generated dist/en_GB/src/components/LanguageSelect/LanguageSelect.jsx
 ...
 ```
 
+translations-section'></a>
+
+## Manage translated templates
+
+In this section is presented how to manage the tranlations by excel sheets and some special rules.
+
 <a name='import-mew-section'></a>
 
-## Importing new languages
+### Importing new languages
+
 
 1) run the command
 
@@ -154,13 +163,15 @@ python build.py
 
 ## Modifying translations
 
+
 In this case we do the same as in the case "Importing new languages",
 but instead of creating a new file we copy an existing file to the folder
 ```src/csv/import```, modify it and run the build command again.
 
 <a name='add-section'></a>
 
-## Adding translations to existing languages
+### Adding translations to existing languages
+
 
 1) Build all
 
@@ -219,21 +230,86 @@ step1.title;Name and Address;NAW gegevens
    the translations are updated.
 
 
-
 <a name='special-tags-section'></a>
 
-## Translation special tags
+### Translation special tags
 
 Below some special tags to modify the format of the texts
 
-### Red
+#### Red
+
+
 All of the texts which are surrounded by the tags ```<red></red>``` will be rendedered in red.
 
 Example:
 ```<red> This will be red </red>```
 
-Also all of the strings ``` 'opt-me' ``` are rendered in red. 
 
+Also all of the strings ```'opt-me'``` are rendered in red.
+
+<a name='about-page-section'></a>
+
+### About page paragraphs
+
+On the page 'about' (src/react/src/steps/About.jsx) we have a place holder  [[PAGE_ABOUT_PARAGRAPHS]] for the  paragraphs.
+
+```
+function About(props) {
+
+
+        return (
+                <div className="step" id="About">
+                        <div
+                                className='closeButton'
+                                onClick={(e) => props.emitChangeSection("closeSection", e)}
+                        >
+                                 
+                        </div>
+                        <div>[[PAGE_ABOUT_PARAGRAPHS]]</div>
+                </div>
+
+        )
+}
+```
+
+The number of the can vary.
+The paragraphs are defined in the Excel as following:
+
+```
+page.about.paragraph1.h; I am am h1; I am am h1
+page.about.paragraph1.p1; h1 p1 text; h1 p1 text
+page.about.paragraph1.p2; h1 p2 text ; h1 p2 text 
+page.about.paragraph2.h; I am a h2; I am a h2
+page.about.paragraph2.p1; h2 p1  text; h2 p1  text
+page.about.paragraph2.p2; h2 p2  text; h2 p2  text
+page.about.paragraph2.p3; h2 p3  text; h2 p3  text
+page.about.paragraph3.h; I am a h3; I am a h3
+page.about.paragraph3.p1; h2 p1  text; h2 p1  text
+```
+
+This will render the followoing three paragraphs.
+
+```
+   <h>I am am h1</h>
+   <p>h1 p1 text</p>
+   <p>h1 p2 text </p>
+   
+   <h>I am a h2</h>
+   <p>h2 p1  text</p>
+   <p>h2 p2  text</p>
+   <p>h2 p3  text</p>
+   
+   <h>I am a h3</h>
+   <p>h2 p1  text</p>
+```
+
+The number of Paragraphs and the <p> sections may vary.
+The generic structure for one paragraph is
+```
+page.about.paragraph{d}.h; Header required; Header required
+page.about.paragraph{d}.p{d}; section N; section N
+page.about.paragraph{d}.p{d}; section N; section N
+```
 
 <a name='folders-section'></a>
 

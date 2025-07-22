@@ -1,15 +1,18 @@
 import json
+import re
 from pprint import pprint
 class Translate:
   
+  def __init__(self):
+    self.translations = ''
   #
   # Translate the current template
   #
   def translate(self,template, templateFileName, overrides):
     html = template
     templateName = self.__getTemplateName(templateFileName)
-    translations = json.dumps(overrides);
-    json_object = json.loads(translations)
+    self.translations = json.dumps(overrides);
+    json_object = json.loads(self.translations)
     html = self.__translateSet(html, '', json_object)
     return html
   
@@ -75,3 +78,71 @@ class Translate:
     template = template.replace('.html', '');
     template = template.replace ("src/", '');
     return template
+
+
+
+  #
+  # Get sub  array of the translations
+  #
+  # Example: et_sub_array('page.about')
+  #
+  #  returns: {
+  #          "title": "About",
+  #          "paragraph1": {
+  #              "h": "I am am h1",
+  #              "p1": "h1 p1 text",
+  #              "p2": "h1 p2 text "
+  #          },
+  #          "paragraph2": {
+  #              "h": "I am a h2",
+  #              "p1": "h2 p1  text",
+  #              "p2": "h2 p2  text",
+  #              "p3": "h2 p3  text"
+  #          }
+  #       }
+  #  
+  #  From the complete array :
+  #
+  #  "page": {
+  #      "about": {
+  #          "title": "About",
+  #          "paragraph1": {
+  #              "h": "I am am h1",
+  #              "p1": "h1 p1 text",
+  #              "p2": "h1 p2 text "
+  #          },
+  #          "paragraph2": {
+  #              "h": "I am a h2",
+  #              "p1": "h2 p1  text",
+  #              "p2": "h2 p2  text",
+  #              "p3": "h2 p3  text"
+  #          }
+  #        }
+  #  }
+  #
+  def get_sub_array(self, arrayKey):
+    keys = arrayKey.split('.')
+    json_object = json.loads(self.translations)
+    items = json_object[ keys[0] ]
+    for key in keys:
+      if (key in items):
+        items = items[key]
+    return items
+
+  #
+  # Get HTML for the place holder [[PAGE_ABOUT_PARAGRAPHS]]
+  #
+  def page_about_paragraphs(self):
+    items = self.get_sub_array('page.about')
+    html = ''
+    for paragraphKey in items.keys():
+      if (paragraphKey.startswith('paragraph')):
+         paragraph = items[paragraphKey]
+         for paragraphKey in paragraph.keys():
+            tag = paragraphKey
+            tag = re.sub(r'[0-9]+', '', tag)
+            row = '<' + tag + '>'
+            row = row + paragraph[paragraphKey]
+            row = row +'</' + tag + '>'
+            html = html + row
+    return html
