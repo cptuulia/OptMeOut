@@ -11,12 +11,17 @@
         },
         "about": {
             "title": "NL About",
-            "h1": "NL I am a h1",
-            "p1": "NL I am paragraph 1",
-            "p2": "NL I am paragraph 2",
-            "h2": "NL I am h2",
-            "p3": "NL I am paragraph 3",
-            "p4": "NL I am paragraph 4"
+            "paragraph1": {
+                "h": "NL I am am h1",
+                "p1": "NL h1 p1 text",
+                "p2": "NL h1 p2 text ",
+                "p3": "NL h1 p3 text "
+            },
+            "paragraph2": {
+                "h": "NL I am a h2",
+                "p1": "NL h2 p1  text",
+                "p2": "NL h2 p2  text"
+            }
         }
     },
     "button": {

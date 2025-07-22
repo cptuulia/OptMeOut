@@ -21,13 +21,7 @@ function About(props) {
                         >
                                 &nbsp;
                         </div>
-                        <h1>[[page.about.title]]</h1>
-                        <h1 className='intro'>[[page.about.h1]]</h1>
-                        <p>[[page.about.p1]]</p>
-                        <p>[[page.about.p2]]</p>
-                        <h1 className='intro'>[[page.about.h2]]</h1>
-                        <p>[[page.about.p3]]</p>
-                        <p>[[page.about.p4]]</p>
+                        <div>[[PAGE_ABOUT_PARAGRAPHS]]</div>
                 </div>
 
         )

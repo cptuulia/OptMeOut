@@ -76,7 +76,8 @@ class HtmlGenerator:
                 html = html.replace('[[LANGUAGE_HTML_OPTIONS]]', languageHtmlOptions)
                 # update countries list
                 html = html.replace('[[COUNTRIES_LIST]]', self.languageCodes.get_country_list())
-
+                html = html.replace('[[PAGE_ABOUT_PARAGRAPHS]]',  translateObj.page_about_paragraphs())
+                
                 # write file
                 targetFile  = self.__get_distFile(srcFile, lang)
                 with open(targetFile, "w") as f:
@@ -109,13 +110,6 @@ class HtmlGenerator:
     #
     # Get file name for the given template and language
     #
-    #def __distFileName(self, srcFile, lang) :
-    #    srcFile = srcFile.replace(config.SRC_TEMPLATE_PATH + '/' ,'')
-    #    parts = srcFile.split('.')
-    #    file = parts[0]
-    #    extension =  parts[1]
-    #    return file +'_' + lang + '.' + extension
-
     def __targetFileName(self, srcFile, lang) :
         srcFile = srcFile.replace(config.SRC_TEMPLATE_PATH + '/' ,'')
         langFolder =  config.DIST_DIR +'/' +  lang
