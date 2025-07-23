@@ -12,7 +12,8 @@ import '/src/components/Header/Header.scss'
 function Header(props) {
         return (
                 <>
-                        <div id="headerLanguageSelect" >
+                        <div id="headerLanguageSelect" 
+                        onClick={(e) => props.emitChangeSection("selectCountry", e)}>
                                [[menu.locale]]
                         </div>
                         <div

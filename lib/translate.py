@@ -141,6 +141,8 @@ class Translate:
          for paragraphKey in paragraph.keys():
             tag = paragraphKey
             tag = re.sub(r'[0-9]+', '', tag)
+            if tag == 'h' :
+              tag = 'h1'
             row = '<' + tag + '>'
             row = row + paragraph[paragraphKey]
             row = row +'</' + tag + '>'
