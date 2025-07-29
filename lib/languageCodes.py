@@ -51,8 +51,6 @@ class LanguageCodes:
     def __set_country_list(self,languages):
         countriesList = {}
         for lang, overrides in languages.items():
-            pprint(lang)
-            pprint(overrides['menu']['country'])
             countriesList[lang] = overrides['menu']['country']
         countriesStr=   json.dumps(countriesList, sort_keys=True)    
         return countriesStr

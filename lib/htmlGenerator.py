@@ -20,6 +20,8 @@ class HtmlGenerator:
     def __init__(self):
         self.languages = self.__get_configured_languages()
         self.languageCodes = LanguageCodes(self.languages)
+        self. __generate_language_folders()
+
        
     # Generate HTML files
     def generate(self):
@@ -41,6 +43,20 @@ class HtmlGenerator:
         for lang_file in Path(config.LANGUAGES_DIR).glob("*.json"):
           with open(lang_file, "r") as f:
               languages[lang_file.stem] = json.load(f)
+        return languages
+
+    #
+    # Generate language folders 
+    #
+    def __generate_language_folders(self):
+        
+        languages = {}
+        for lang_file in Path(config.LANGUAGES_DIR).glob("*.json"):
+          with open(lang_file, "r") as f:
+              languages[lang_file.stem] = json.load(f)
+        for lang, overrides in self.languages.items():
+            distPath =  config.DIST_DIR + '/'+ lang 
+            Path(distPath).mkdir(exist_ok=True)
         return languages
 
     #
@@ -135,5 +151,5 @@ class HtmlGenerator:
     def __makeDistFolder(self,srcPath):
         srcPath = srcPath.replace(config.SRC_TEMPLATE_PATH + '/' ,'')
         for lang, overrides in self.languages.items():
-            distPath =  config.DIST_DIR + '/'+ lang + '/' +  srcPath
+            distPath =  config.DIST_DIR + '/'+ lang + '/' + srcPath
             Path(distPath).mkdir(exist_ok=True)
